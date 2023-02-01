@@ -1,0 +1,62 @@
+/* 박상규 */
+.service-box04 {
+    box-shadow: 0 13px 8px -10px rgba(0, 0, 0, 0.1);
+
+}
+
+.service-box04 {
+    background-color: #fff;
+    padding: 2.5rem 1.3rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    height: 20rem;
+}
+  
+.service-box04:hover .ico-circle {
+transition: all 500ms ease;
+color: #fff;
+background-color: #0078ff;
+box-shadow: 0 0 0 10px #cde1f8;
+}
+
+.service-box04 .service-ico {
+margin-bottom: 1rem;
+color: #1e1e1e;
+}
+
+.service-box04 .ico-circle {
+transition: all 500ms ease;
+font-size: 4rem;
+}
+
+.service-box04 .s-title {
+font-size: 1.4rem;
+text-transform: uppercase;
+text-align: center;
+padding: .4rem 0;
+}
+
+.service-box04 .s-description {
+color: #4e4e4e;
+}
+
+  
+.row04 {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-md-6_04 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
