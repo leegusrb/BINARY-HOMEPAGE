@@ -1,1 +1,36 @@
 /* 최유경 */
+.row02{
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    justify-content: center;
+}
+
+.lead02{
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    font-size: 1.3rem;
+
+    justify-content: center;
+}
+
+.col-md-6-02{
+    display: contents;
+    text-align: center;
+}
+.title-box-2-02 {
+    margin-bottom: 4rem;
+    text-align: center;
+    border-bottom: 4px solid #0078ff;
+    padding-bottom: 1em;
+}
+.title-left02 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    position: relative;
+}
