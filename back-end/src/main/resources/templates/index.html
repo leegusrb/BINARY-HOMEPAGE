@@ -1,6 +1,5 @@
-<!-- tip : Ctrl+/ 하면 해당 줄이나 구역 한 번에 주석처리 가능-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <title>DevFolio Bootstrap Template</title>
@@ -24,7 +23,6 @@
 
   <!-- Main Stylesheet File -->
   <link href="/css/style.css" rel="stylesheet">
-  <link href="/css/01.css" rel="stylesheet">
   <link href="/css/02.css" rel="stylesheet">
   <link href="/css/03.css" rel="stylesheet">
   <link href="/css/04.css" rel="stylesheet">
@@ -68,7 +66,7 @@
             <a class="nav-link js-scroll" href="#service05">정지윤</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll" href="#">LOGIN</a>
+            <a class="nav-link js-scroll" href="/login">LOGIN</a>
           </li>
         </ul>
       </div>
@@ -93,77 +91,81 @@
   <!--/ Intro Skew End /-->
 
   <!--최유경 시작-->
-  <!--2페이지-->
-  <section id="about02" class="about-mf sect-pt4 route">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="box-shadow-full">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="row">
-                  <div class="col-sm-6 col-md-5">
-                    <div class="about-img">
-                      <img src="/img/testimonial-2.jpg" class="img-fluid rounded b-shadow-a" alt="">
+  <!--1페이지-->
+  <section id="about02">
+    <div class="section-counter paralax-mf bg-image" style="background-image: url(/img/counters-bg.jpg)">
+      <div class="overlay-mf02"></div>
+      <div class="about-mf sect-pt4 route">
+        <div class="container">
+          <div class="row02">
+            <div class="col-sm-12">
+              <div class="row02">
+                <div class="col-md-6-02">
+                  <div class="about-me pt-4-02 pt-md-0">
+                    <div class="title-box-2-02">
+                      <h5 class="title-left02">
+                        "0과 1로 자신만의 역사를 만들어라"
+                      </h5>
                     </div>
-                  </div>
-                  <div class="col-sm-6 col-md-7">
-                    <div class="about-info">
-                      <p><span class="title-s">Name: </span> <span>Morgan Freeman</span></p>
-                      <p><span class="title-s">Profile: </span> <span>full stack developer</span></p>
-                      <p><span class="title-s">Email: </span> <span>contact@example.com</span></p>
-                      <p><span class="title-s">Phone: </span> <span>(617) 557-0089</span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="skill-mf">
-                  <p class="title-s">Skill</p>
-                  <span>HTML</span> <span class="pull-right">85%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
-                      aria-valuemax="100"></div>
-                  </div>
-                  <span>CSS3</span> <span class="pull-right">75%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                      aria-valuemax="100"></div>
-                  </div>
-                  <span>PHP</span> <span class="pull-right">50%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                      aria-valuemax="100"></div>
-                  </div>
-                  <span>JAVASCRIPT</span> <span class="pull-right">90%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0"
-                      aria-valuemax="100"></div>
+                    <p class="lead02">
+                      Welcome to BINARY world!
+                      <br>
+                      상상을 현실로 만드는 지능기전공학부 프로그래밍 학술 동아리 BINARY입니다.
+                    </p>
+                    <br>
+                    <br>
+                    <br>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="about-me pt-4 pt-md-0">
-                  <div class="title-box-2">
-                    <h5 class="title-left">
-                      About me
-                    </h5>
-                  </div>
-                  <p class="lead">
-                    Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur arcu erat, accumsan id
-                    imperdiet et, porttitor
-                    at sem. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla
-                    porttitor accumsan tincidunt.
-                  </p>
-                  <p class="lead">
-                    Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget felis
-                    porttitor volutpat. Vestibulum
-                    ac diam sit amet quam vehicula elementum sed sit amet dui. porttitor at sem.
-                  </p>
-                  <p class="lead">
-                    Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim.
-                    Nulla porttitor accumsan
-                    tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-                  </p>
-                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box02">
+              <div class="counter-ico02">
+                <span class="ico-circle02"><i class="ion-checkmark-round"></i></span>
+              </div>
+              <div class="counter-num02">
+                <p class="counter">20</p>
+                <span class="counter-text">지금까지 한 프로젝트 수</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box02 pt-4 pt-md-0">
+              <div class="counter-ico02">
+                <span class="ico-circle02"><i class="ion-ios-calendar-outline"></i></span>
+              </div>
+              <div class="counter-num02">
+                <p class="counter">15</p>
+                <span class="counter-text"> 1년에 하는 활동 개수?</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box02 pt-4 pt-md-0">
+              <div class="counter-ico02">
+                <span class="ico-circle02"><i class="ion-ios-people"></i></span>
+              </div>
+              <div class="counter-num02">
+                <p class="counter">84</p>
+                <span class="counter-text">지금까지 바이너리에 가입한 인원 or 현재 4기 인원</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box02 pt-4 pt-md-0">
+              <div class="counter-ico02">
+                <span class="ico-circle02"><i class="ion-ribbon-a"></i></span>
+              </div>
+              <div class="counter-num02">
+                <p class="counter">36</p>
+                <span class="counter-text">지금까지 수상한 상 수</span>
               </div>
             </div>
           </div>
@@ -193,7 +195,7 @@
                       <img src="/img/man-technologist-light-skin-tone.png" class="img03">
                     </div>
                     <div class="speech-bubble03">
-                      다른 사람들과 프로젝트를 해보고 싶은 학생<br> 
+                      다른 사람들과 프로젝트를 해보고 싶은 학생<br>
                     </div>
                   </div>
                   <div class="recommend03">
@@ -209,7 +211,7 @@
                       <img src="/img/books.png" class="img03">
                     </div>
                     <div class="speech-bubble03">
-                      다음 학기 수업을 미리 공부해보고 싶은 학생<br>                   
+                      다음 학기 수업을 미리 공부해보고 싶은 학생<br>
                     </div>
                   </div>
                   <div class="recommend03">
@@ -250,7 +252,11 @@
               <img src="/img/award01.jpg" class="img03-02">
             </div>
             <div class="service-content">
-              <h2 class="s-title" id="title03-01">세종대학교 제 2회<br> 창의융합노마드 융합아이디어<br> 학술제 우수상</h2>
+              <h2 class="s-title" id="title03-01">
+                세종대학교 제 2회<br>
+                창의융합노마드 융합아이디어<br>
+                학술제 우수상
+              </h2>
             </div>
           </div>
         </div>
@@ -260,7 +266,10 @@
               <img src="/img/award02.jpg" class="img03-02">
             </div>
             <div class="service-content">
-              <h2 class="s-title" id="title03-02">세종대학교 제 4회<br> SW·해커톤 은상</h2>
+              <h2 class="s-title" id="title03-02">
+                  세종대학교 제 4회<br>
+                  SW·해커톤 은상
+              </h2>
             </div>
           </div>
         </div>
@@ -270,7 +279,10 @@
               <img src="/img/award03.jpg" class="img03-02">
             </div>
             <div class="service-content">
-              <h2 class="s-title" id="title03-03">세종대학교 제 5회<br> SW·해커톤 은상</h2>
+              <h2 class="s-title" id="title03-03">
+                  세종대학교 제 5회<br>
+                  SW·해커톤 은상
+              </h2>
             </div>
           </div>
         </div>
@@ -290,7 +302,10 @@
               <img src="/img/award05.jpg" class="img03-02">
             </div>
             <div class="service-content">
-              <h2 class="s-title" id="title03-05">세종대학교 창의설계경진대회<br> 최우수상</h2>
+              <h2 class="s-title" id="title03-05">
+                  세종대학교 창의설계경진대회<br>
+                  최우수상
+              </h2>
             </div>
           </div>
         </div>
@@ -415,7 +430,7 @@
   </section>
   <!--/ Section Services End /-->
   <!--박상규 끝-->
-  
+
   <!--정지윤 시작-->
   <!--3페이지-->
   <!--/ Section Services Star /-->
@@ -691,12 +706,36 @@
             </a>
           </div>
         </div>
-        
+
       </div>
     </div>
   </section>
   <!--/ Section Portfolio End /-->
   <!--정지윤 끝-->
+
+  <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(/img/overlay-bg.jpg)">
+    <div class="overlay-mf"></div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="copyright-box">
+              <p class="copyright">&copy; Copyright <strong>DevFolio</strong>. All Rights Reserved</p>
+              <div class="credits">
+                <!--
+                  All the links in the footer should remain intact.
+                  You can delete the links only if you purchased the pro version.
+                  Licensing information: https://bootstrapmade.com/license/
+                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=DevFolio
+                -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </section>
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <div id="preloader"></div>

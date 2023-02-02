@@ -1,1 +1,114 @@
 /* 최유경 */
+.row02{
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    justify-content: center;
+}
+
+.lead02{
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    font-size: 1.3rem;
+    color: #ffffff;
+    justify-content: center;
+}
+
+.col-md-6-02{
+    display: contents;
+    text-align: center;
+    color: #ffffff;
+
+}
+.title-box-2-02 {
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 3px solid #ffffff;
+    padding-bottom: 1em;
+}
+.title-left02 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    position: relative;
+    color: #ffffff;
+
+}
+
+.socials .ico-circle02 {
+    height: 40px;
+    width: 40px;
+    font-size: 1.7rem;
+    border-radius: 50%;
+    line-height: 1.4;
+    margin: 0 15px 0 0;
+    transition: all 500ms ease;
+}
+
+.socials .ico-circle02:hover {
+    color: #fff;
+    box-shadow: 0 0 0 3px #cde1f8;
+    transition: all 500ms ease;
+}
+.ico-circle02 {
+    height: 100px;
+    width: 100px;
+    font-size: 2rem;
+    border-radius: 50%;
+    line-height: 1.55;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+.service-box:hover .ico-circle02 {
+    transition: all 500ms ease;
+    color: #fff;
+    box-shadow: 0 0 0 10px #cde1f8;
+}
+.service-box .ico-circle02 {
+    transition: all 500ms ease;
+    font-size: 4rem;
+}
+.counter-ico02 .ico-circle02 {
+    height: 60px;
+    width: 60px;
+    line-height: 1.8;
+    box-shadow: 0 0 0 10px #cde1f8;
+}
+
+.counter-box02 {
+    color: #fff;
+    text-align: center;
+}
+
+.counter-ico02 {
+    margin-bottom: 1rem;
+}
+.counter-num02 .counter {
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.overlay-mf02 {
+    background-color: #000000;
+}
+
+.overlay-mf02 {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .8;
+}
+
+@media (min-width: 577px) {
+    .counter-box02 {
+        margin-bottom: 1.8rem;
+    }
+}

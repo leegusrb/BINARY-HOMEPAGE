@@ -16,11 +16,13 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    private String name;
+    private String userName;
 
     private Integer studentId;
 
     private String password;
 
     private Integer generation;
+
+    private Role role;
 }
