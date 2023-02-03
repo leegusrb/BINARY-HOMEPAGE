@@ -3,10 +3,7 @@ package com.binary.homepage.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter @Setter
@@ -16,13 +13,20 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    private String userName;
+    private String name;
 
     private Integer studentId;
 
     private String password;
 
-    private Integer generation;
+    private boolean enabled;
 
+    private int generation;
+
+    @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "grass_id")
+    private Grass grass;
 }

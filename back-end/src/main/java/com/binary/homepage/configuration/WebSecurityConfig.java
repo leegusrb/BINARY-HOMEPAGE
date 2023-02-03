@@ -24,11 +24,13 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .antMatchers("/").permitAll()
+                        .antMatchers("/").authenticated()
                         .anyRequest().permitAll()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
+                        .usernameParameter("student_id")
+                        .passwordParameter("password")
                         .permitAll()
                 )
                 .logout((logout) -> logout.permitAll());
@@ -41,13 +43,12 @@ public class WebSecurityConfig {
             throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-//                .passwordEncoder(passwordEncoder())
-                .usersByUsernameQuery("select user_name, password, enabled "
+                .usersByUsernameQuery("select student_id, password, enabled "
                         + "from member "
-                        + "where user_name = ?")
-                .authoritiesByUsernameQuery("select user_name, role "
+                        + "where student_id = ?")
+                .authoritiesByUsernameQuery("select student_id, role "
                         + "from member "
-                        + "where user_name = ?");
+                        + "where student_id = ?");
     }
 
     @Bean
