@@ -26,9 +26,9 @@ public class MemberRepository {
                 .getResultList();
     }
 
-    public List<Member> findByName(String name) {
-        return em.createQuery("select m from Member m where m.name = :name", Member.class)
-                .setParameter("name", name)
+    public List<Member> findByStudentId(int studentId) {
+        return em.createQuery("select m from Member m where m.studentId = :studentId", Member.class)
+                .setParameter("studentId", studentId)
                 .getResultList();
     }
 }
