@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>DevFolio Bootstrap Template</title>
+  <title>BINARY</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -59,43 +59,116 @@
           <div class="contact-mf">
             <div id="contact" class="box-shadow-full">
               <div class="row">
-                
-                <!--바이너리 로고-->
-                  <div class="col-sm">
-                    <div class="title-box-2 pt-4 pt-md-0">
-                        <div class="logo">
-                            <img src="img/logoexample.png" class="logoexample">
+                <div class="container">
+                  <div class="row">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col">
+                                  <h4 class="card-title text-center">최유경</h4>
+                                </div>
+                                <div class="col">
+                                  <div align="right">
+                                    <img src="img/level1.png" class="img-my">
+                                  </div>
+                                </div>
+                              </div>
+                              <p class="card-text">
+                                내 깃허브 주소
+                              </p>
+                              <p class="card-text">
+                                내 노션 주소
+                              </p>
+                              <div align="right">
+                                <button type="button" class="btn btn-outline-secondary" disabled>내 정보 변경</button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
+                      <br>
+                      <br>
+                      <div class="col-md-8">
+                        <div class="card text-end">
+                          <div class="card-header text-end">
+                            16/20 달성!
+                          </div>
+                          <div class="card-body">
+                            <h5 class="card-title">내 텃밭</h5>
+                            <p class="card-text">~잔디심기~</p>
+                            <div align="right">
+                              <button type="button" class="btn btn-outline-primary">물 주러가기</button> 
+                              <!--백준사이트 연결-->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
-                <!--로고 끝-->
+                </div>
+                <br>
+                <br>
 
-                <!--로그인 부분-->
-                <div class="col-sm-5">
-                  <div class="login-wrapper">
-                      <h2>
-                        <span style=" font-size:3.0em; color: #224c93;">
-                          <b>LOGIN</b>
-                        </span>
-                      </h2>
-                      <br>
-                      <div th:if="${param.error}" class="alert alert-danger" role="alert">
-                          아이디나 비밀번호가 잘못되었습니다.
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <div class="card" style="width: 29.5rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">내가 쓴 글</h5>
+                        </div>
+                        
+                        <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                          <ol class="list-group-item">[코딩게시판] 이거 어떻게 하나요?</ol>
+                          <ol class="list-group-item">A second item</ol>
+                          <ol class="list-group-item">A third item</ol>
+                        </ul>
+                        <br>
+                          <div align="right">
+                          <button type="button" class="btn btn-outline-secondary" disabled>편집</button>
+                          </div>
+                        </div>
                       </div>
-                      <div th:if="${param.logout}" class="alert alert-primary" role="alert">
-                          로그아웃 되었습니다.
+                    </div>
+                    <div class="col">
+                      <div class="card" style="width: 29.5rem;">
+                        <div class="card-body">
+
+                        <h5 class="card-title">내가 한 활동</h5>
+                        <p class="card-text">자신이 한 활동의 노션링크를 올려보세요!</p>
+
+                          <ul class="nav nav-pills card-header-pills">
+                            <li class="nav-item">
+                              <a class="nav-link active" href="#">Study</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Project</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link disabled">Contest</a>
+                            </li>
+                          </ul>
+
+
+                        <div class="card-body">
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">~노션 링크~</li>
+                          <li class="list-group-item">~노션 링크~</li>
+                          <li class="list-group-item">~노션 링크~</li>
+                        </ul>
+                        <br>
+                          <div align="right">
+                            <button type="button" class="btn btn-outline-secondary" disabled>편집</button>
+                          </div>
+                        </div>
                       </div>
-                      <form th:action="@{/login}" method="post" id="login-form">
-                          <input type="text" name="student_id" placeholder="ID"><br>
-                          <input type="password" name="password" placeholder="Password"><br>
-                          <label for="remember-check"><br>
-                              <input type="checkbox" id="remember-check"> 아이디 저장하기
-                          </label><br>
-                          <input type="submit" value="Login">
-                      </form>
+                    </div>
                   </div>
-                  <!--ID/PW, 회원가입-->
-              </div>  
+                </div>
               </div>
             </div>
           </div>
@@ -119,7 +192,7 @@
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="lib/lightbox/js/lightbox.min.js"></script>
   <script src="lib/typed/typed.min.js"></script> 
-  <!-- Contact Form JavaScript File 
+  <!-- Contact Form JavaScript File -->
   <script src="contactform/contactform.js"></script> 
 
   <!-- Template Main Javascript File -->
