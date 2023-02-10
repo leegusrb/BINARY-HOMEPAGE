@@ -1,0 +1,23 @@
+.list {
+    border-bottom: 1.5px solid #0275d8;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    padding-bottom: 0.5rem;
+}   
+
+.passwordInput {
+    
+}
+
+.passwordBtn {
+    float : right;
+}
+
+.contents-div {
+
+    margin-bottom: 5rem;
+}
+
+.form-div {
+    margin-top: 5rem;
+}
