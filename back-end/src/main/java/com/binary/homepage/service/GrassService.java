@@ -36,7 +36,7 @@ public class GrassService {
 
         return grasses
                 .stream()
-                .sorted((g1, g2) -> g2.getAllGrassNum() - g1.getAllGrassNum())
+                .sorted((g1, g2) -> getMonthGrass(g2).size() - getMonthGrass(g1).size())
                 .collect(Collectors.toList());
     }
 
