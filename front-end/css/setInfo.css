@@ -1,23 +1,52 @@
 .list {
-    border-bottom: 1.5px solid #0275d8;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    padding-bottom: 0.5rem;
-}   
-
-.passwordInput {
-    
+  border-bottom: 1.5px solid #0275d8;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
 }
 
+
 .passwordBtn {
-    float : right;
+  float: right;
 }
 
 .contents-div {
-
-    margin-bottom: 5rem;
+  margin-bottom: 5rem;
 }
 
 .form-div {
-    margin-top: 5rem;
+  margin-top: 5rem;
+}
+
+.link-list {
+  border: 2px solid gainsboro;
+  border-radius: 5px;
+  margin: 1rem;
+}
+
+.link {
+  border-top: 2px solid gainsboro;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin: 0.5rem 1rem;
+}
+.link-btn {
+    float: right;
+    font-size: 10px;
+}
+
+.add-link {
+    border-radius: 5px;
+    background-color: gainsboro;
+    padding: 0.7rem;
+    padding-bottom: 0.4rem;
+}
+
+.add-input-link{
+    margin-left: 2rem;
+    margin-right: 1rem;
+}
+
+.link-title {
+    margin : 1rem;
 }

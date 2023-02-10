@@ -74,20 +74,29 @@
                     <form action="" class="form-div">
                       <label class="row">
                         <p class="col-sm-5">기존 비밀번호</p>
-                        <input class="passwordInput col-md-6" type="text" required
-                      />              
+                        <input
+                          class="col-md-6"
+                          type="text"
+                          required
+                        />
                       </label>
                       <br />
                       <label class="row">
                         <p class="col-sm-5">새 비밀번호</p>
-                        <input class="passwordInput col-md-6" type="text" required
-                      />              
+                        <input
+                          class="col-md-6"
+                          type="text"
+                          required
+                        />
                       </label>
                       <br />
                       <label class="row">
                         <p class="col-sm-5">새 비밀번호 재입력</p>
-                        <input class="passwordInput col-md-6" type="text" required
-                      />              
+                        <input
+                          class="col-md-6"
+                          type="text"
+                          required
+                        />
                       </label>
                       <br />
                       <button type="button" class="btn btn-primary passwordBtn">
@@ -103,14 +112,79 @@
                   </div>
                   <div class="col-md-9">
                     <form action="" class="form-div">
-                      <label class="row ">
-                        <p class="col-sm-5">상세 정보</p>
-                        <input class="passwordInput col-md-6" type="text" required
-                      />              
-                      </label>                     
+                      <label class="row">
+                        <p class="col-sm-5">한 줄 소개</p>
+                        <input
+                          class="col-md-6"
+                          type="text"
+                          value="안녕하세요"
+                        />
+                      </label>
                       <br />
+                      <label class="row">
+                        <p class="col-sm-5">백준 ID</p>
+                        <input
+                          class="col-md-6"
+                          type="text"
+                          value="doriro"
+                        />
+                      </label>
+                      <br />
+                      <label class="row">
+                        <p class="col-sm-5">한 줄 소개</p>
+                        <input
+                          class="col-md-6"
+                          type="text"
+                          required
+                        />
+                      </label>
+
+                      <!-- 노션 및 깃허브 등 주소 목록 -->
+                      <div class="link-list">
+                        <div class="link-title">
+                          <h7>주소 목록</h7>
+                        </div>
+                        <!-- 주소 공간 -->
+                        <div class="link">
+                          <h7>https://github.com/sangkyu39?tab=repositories</h7>
+                          <button type="button" class="btn btn-light link-btn">
+                            삭제
+                          </button>
+                        </div>
+
+                        <div class="link">
+                          <h7>https://github.com/sangkyu39?tab=repositories</h7>
+                          <button type="button" class="btn btn-light link-btn">
+                            삭제
+                          </button>
+                        </div>
+
+                        <div class="link">
+                          <h7>https://github.com/sangkyu39?tab=repositories</h7>
+                          <button type="button" class="btn btn-light link-btn">
+                            삭제
+                          </button>
+                        </div>
+
+                        <!-- 주소 추가 -->
+                        <div class="add-link">
+                          <label class="row">
+                            <input
+                              class="col-md-10 add-input-link"
+                              type="text"
+                            />
+                            <button
+                              type="button"
+                              class="btn btn-light link-btn"
+                            >
+                              추가
+                            </button>
+                          </label>
+                        </div>
+                      </div>
+
                       <button type="button" class="btn btn-primary passwordBtn">
-                        Submit
+                        Save
                       </button>
                     </form>
                   </div>
