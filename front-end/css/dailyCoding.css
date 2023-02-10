@@ -1,0 +1,23 @@
+.img-my{
+    width: 60%;
+}
+
+.grassBtn {
+    font-size: 8px;
+    float: right;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.grassRow {
+    margin-top : 2%;
+}
+
+.grass-day {
+    margin-top: 10% ;
+    border : 2px solid gainsboro;
+    border-radius: 10px;
+    padding : 0.3rem;
+}
