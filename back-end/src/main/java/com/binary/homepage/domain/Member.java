@@ -27,6 +27,8 @@ public class Member {
 
     private String notion;
 
+    private String introduce;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 

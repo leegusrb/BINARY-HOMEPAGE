@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>BINARY</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="" name="keywords"/>
+    <meta content="" name="description"/>
+
+    <!-- Favicons -->
+    <link href="/img/favicon.png" rel="icon"/>
+    <link href="/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+
+    <!-- Bootstrap CSS File -->
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Libraries CSS Files -->
+    <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="/lib/animate/animate.min.css" rel="stylesheet"/>
+    <link href="/lib/ionicons/css/ionicons.min.css" rel="stylesheet"/>
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"/>
+    <link href="/lib/lightbox/css/lightbox.min.css" rel="stylesheet"/>
+
+    <!-- Main Stylesheet File -->
+    <link href="/css/style.css" rel="stylesheet"/>
+    <link href="/css/setInfo.css" rel="stylesheet"/>
+</head>
+
+<body>
+<!--/ Nav Star /-->
+<nav
+        class="navbar navbar-b navbar-trans navbar-expand-md fixed-top"
+        id="mainNav"
+>
+    <div class="container">
+        <a class="navbar-brand js-scroll" href="/">BINARY</a>
+        <button
+                class="navbar-toggler collapsed"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarDefault"
+                aria-controls="navbarDefault"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+<!--/ Nav End /-->
+
+<section
+        class="paralax-mf footer-paralax bg-image route"
+        style="background-image: url(/img/overlay-bg.jpg)"
+>
+    <div class="overlay-mf"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="contact-mf">
+                    <div id="contact" class="box-shadow-full">
+                        <div class="container">
+                            <h1>Setting</h1>
+                            <hr class="border border-primary border-3 opacity-75"/>
+                        </div>
+                        <!-- put change password div -->
+                        <div class="row contents-div container">
+                            <div class="col-sm-3">
+                                <h5 class="list">비밀번호 변경</h5>
+                            </div>
+                            <div class="col-md-9">
+                                <form method="" class="form-div">
+                                    <label class="row">
+                                        <span class="col-sm-5">기존 비밀번호</span>
+                                        <input class="col-md-6" type="text" required/>
+                                    </label>
+                                    <br/>
+                                    <label class="row">
+                                        <span class="col-sm-5">새 비밀번호</span>
+                                        <input class="col-md-6" type="text" required/>
+                                    </label>
+                                    <br/>
+                                    <label class="row">
+                                        <span class="col-sm-5">새 비밀번호 재입력</span>
+                                        <input class="col-md-6" type="text" required/>
+                                    </label>
+                                    <br/>
+                                    <button type="button" class="btn btn-primary passwordBtn">
+                                        Change
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- put change profile info -->
+                        <div class="row contents-div container">
+                            <div class="col-sm-3">
+                                <h5 class="list">상세정보 변경</h5>
+                            </div>
+                            <div class="col-md-9">
+                                <form th:action="'/myPage/' + ${studentId} + '/updateInfo'" method="post" class="form-div" th:object="${memberForm}">
+                                    <input type="hidden" th:field="*{id}">
+                                    <label class="row">
+                                        <span class="col-sm-5">한 줄 소개</span>
+                                        <input
+                                                class="col-md-6"
+                                                type="text"
+                                                th:field="*{introduce}"
+                                        />
+                                    </label>
+                                    <br/>
+                                    <label class="row">
+                                        <span class="col-sm-5">백준 ID</span>
+                                        <input class="col-md-6" type="text" th:field="*{grassName}"/>
+                                    </label>
+                                    <br/>
+                                    <label class="row">
+                                        <span class="col-sm-5">GitHub 주소</span>
+                                        <input class="col-md-6" type="text" th:field="*{gitHub}"/>
+                                    </label>
+
+                                    <!-- 노션 및 깃허브 등 주소 목록 -->
+                                    <div class="link-list">
+                                        <div class="link-title">
+                                            <span>주소 목록</span>
+                                        </div>
+                                        <!-- 주소 공간 -->
+                                        <div class="link">
+                                            <span>https://github.com/sangkyu39?tab=repositories</span>
+                                            <button type="button" class="btn btn-light link-btn">
+                                                삭제
+                                            </button>
+                                        </div>
+
+                                        <div class="link">
+                                            <span>https://github.com/sangkyu39?tab=repositories</span>
+                                            <button type="button" class="btn btn-light link-btn">
+                                                삭제
+                                            </button>
+                                        </div>
+
+                                        <div class="link">
+                                            <span>https://github.com/sangkyu39?tab=repositories</span>
+                                            <button type="button" class="btn btn-light link-btn">
+                                                삭제
+                                            </button>
+                                        </div>
+
+                                        <!-- 주소 추가 -->
+                                        <div class="add-link">
+                                            <label class="row">
+                                                <input
+                                                        class="col-md-10 add-input-link"
+                                                        type="text"
+                                                />
+                                                <button
+                                                        type="button"
+                                                        class="btn btn-light link-btn"
+                                                >
+                                                    추가
+                                                </button>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary passwordBtn">
+                                        Save
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Section Contact-footer End /-->
+
+<a href="/#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<div id="preloader"></div>
+
+<!-- JavaScript Libraries -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/jquery/jquery-migrate.min.js"></script>
+<script src="/lib/popper/popper.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/lib/easing/easing.min.js"></script>
+<script src="/lib/counterup/jquery.waypoints.min.js"></script>
+<script src="/lib/counterup/jquery.counterup.js"></script>
+<script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="/lib/lightbox/js/lightbox.min.js"></script>
+<script src="/lib/typed/typed.min.js"></script>
+<!-- Contact Form JavaScript File -->
+<script src="/contactform/contactform.js"></script>
+
+<!-- Template Main Javascript File -->
+<script src="/js/main.js"></script>
+</body>
+</html>

@@ -68,14 +68,14 @@
                         <!-- 잔디심기 카드 -->
                         <div class="card-area">
                             <div class="row grassRow"
-                                 th:each="num : ${#numbers.sequence(0, (ranking.size() + 2) / 3 - 2)}">
+                                 th:each="num : ${#numbers.sequence(0, (ranking.size() + 2) / 4 - 1)}">
                                 <!-- 개인별 카드 -->
                                 <div class="col-md-3"
                                      th:each="grass : ${ranking.subList(num * 4, T(java.lang.Math).min((num + 1) * 4, ranking.size()))}">
                                     <div class="card">
                                         <div class="card-header">
                                             <span th:text="${grass.member.name}"></span>
-                                            <a type="button" class="btn btn-outline-primary grassBtn" th:href="'https://www.acmicpc.net/user/' + ${grass.grassName}">
+                                            <a type="button" class="btn btn-outline-primary grassBtn" th:href="'/myPage/' + ${grass.member.studentId}">
                                                 방문하기
                                             </a>
                                         </div>

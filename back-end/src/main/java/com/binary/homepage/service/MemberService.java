@@ -57,4 +57,15 @@ public class MemberService {
         member.setPassword(passwordEncoder.encode(password));
     }
 
+    /**
+     * 상세정보 변경
+     */
+    @Transactional
+    public void updateInfo(Long id, String introduce, String grassName, String gitHub) {
+        Member member = memberRepository.findOne(id);
+        member.setIntroduce(introduce);
+        member.getGrass().setGrassName(grassName);
+        member.setGitHub(gitHub);
+    }
+
 }
