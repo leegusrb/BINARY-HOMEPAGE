@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter @Setter
 public class Member {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Long id;
 
@@ -22,6 +22,10 @@ public class Member {
     private boolean enabled;
 
     private int generation;
+
+    private String gitHub;
+
+    private String notion;
 
     @Enumerated(EnumType.STRING)
     private Role role;

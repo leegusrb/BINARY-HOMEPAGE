@@ -12,7 +12,7 @@ import java.util.List;
 @Getter @Setter
 public class Grass {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "grass_id")
     private Long id;
 
@@ -26,9 +26,9 @@ public class Grass {
     private List<GrassInfo> grassInfos = new ArrayList<>();
 
     /**
-     * 잔디 개수
+     * 올해 전체 잔디 개수
      */
-    public int grassNum() {
+    public int getAllGrassNum() {
         return grassInfos.size();
     }
 }

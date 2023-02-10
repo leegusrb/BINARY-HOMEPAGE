@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Getter @Setter
 public class GrassInfo {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "grass_info_id")
     private Long id;
 

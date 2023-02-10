@@ -47,14 +47,14 @@
     line-height: 1.4;
     margin: 0 15px 0 0;
     transition: all 500ms ease;
-}
-
-.socials .ico-circle02:hover {
+  }
+  
+  .socials .ico-circle02:hover {
     color: #fff;
     box-shadow: 0 0 0 3px #cde1f8;
     transition: all 500ms ease;
-}
-.ico-circle02 {
+  }
+  .ico-circle02 {
     height: 100px;
     width: 100px;
     font-size: 2rem;
@@ -63,41 +63,41 @@
     margin: 0 auto;
     text-align: center;
     display: block;
-}
-.service-box:hover .ico-circle02 {
+  }
+  .service-box:hover .ico-circle02 {
     transition: all 500ms ease;
     color: #fff;
     box-shadow: 0 0 0 10px #cde1f8;
-}
-.service-box .ico-circle02 {
+  }
+  .service-box .ico-circle02 {
     transition: all 500ms ease;
     font-size: 4rem;
-}
-.counter-ico02 .ico-circle02 {
+  }
+  .counter-ico02 .ico-circle02 {
     height: 60px;
     width: 60px;
     line-height: 1.8;
     box-shadow: 0 0 0 10px #cde1f8;
-}
+  }
 
-.counter-box02 {
+  .counter-box02 {
     color: #fff;
     text-align: center;
-}
+  }
 
-.counter-ico02 {
+  .counter-ico02 {
     margin-bottom: 1rem;
-}
-.counter-num02 .counter {
+  }
+  .counter-num02 .counter {
     font-size: 2rem;
     margin-bottom: 0;
-}
+  }
 
-.overlay-mf02 {
+  .overlay-mf02 {
     background-color: #000000;
-}
-
-.overlay-mf02 {
+  }
+  
+  .overlay-mf02 {
     position: absolute;
     top: 0;
     left: 0px;
@@ -105,10 +105,10 @@
     height: 100%;
     width: 100%;
     opacity: .8;
-}
+  }
 
-@media (min-width: 577px) {
+  @media (min-width: 577px) {
     .counter-box02 {
-        margin-bottom: 1.8rem;
+      margin-bottom: 1.8rem;
     }
-}
+  }

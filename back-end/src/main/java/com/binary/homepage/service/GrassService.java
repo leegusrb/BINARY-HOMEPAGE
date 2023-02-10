@@ -1,13 +1,15 @@
 package com.binary.homepage.service;
 
 import com.binary.homepage.domain.Grass;
+import com.binary.homepage.domain.GrassInfo;
+import com.binary.homepage.repository.GrassJpaRepository;
 import com.binary.homepage.repository.GrassRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Comparator;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +19,7 @@ import java.util.stream.Collectors;
 public class GrassService {
 
     private final GrassRepository grassRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final GrassJpaRepository grassJpaRepository;
 
     /**
      * 잔디심기 전체 조회
@@ -34,7 +36,7 @@ public class GrassService {
 
         return grasses
                 .stream()
-                .sorted((g1, g2) -> g2.grassNum() - g1.grassNum())
+                .sorted((g1, g2) -> g2.getAllGrassNum() - g1.getAllGrassNum())
                 .collect(Collectors.toList());
     }
 
@@ -43,5 +45,16 @@ public class GrassService {
      */
     public Grass findOne(Long grassId) {
         return grassRepository.findOne(grassId);
+    }
+
+    @Transactional
+    @Scheduled(cron = "0 0 0 * * *")
+    public void updateGrass() {
+
+    }
+
+    public List<GrassInfo> getMonthGrass(Grass grass) {
+        LocalDate start = LocalDate.now().plusDays(-30);
+        return grassJpaRepository.findAllByGrassEqualsAndDateIsAfter(grass, start);
     }
 }

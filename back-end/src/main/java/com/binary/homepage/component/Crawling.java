@@ -1,4 +1,4 @@
-package com.binary.homepage.crawling;
+package com.binary.homepage.component;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;

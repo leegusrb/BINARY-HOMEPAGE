@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+body{
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+.title-leftmy {
+    font-size: 1.5rem;
+    /* font-weight: bold; */
+    position: relative;
+    color: #000000;
+}
+
+.img-my{
+    width: 80%;
+}

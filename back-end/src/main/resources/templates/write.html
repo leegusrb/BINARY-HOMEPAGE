@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항</title>
+    <link rel="stylesheet" href="/css/write.css">
+    <style>
+        header {
+            border-bottom: 3px solid green;
+        }
+    </style>
+</head>
+<body>
+<!-- 화면 상단 로고와 메뉴바 -->
+<div class="container">
+    <header class="header">
+        <h1><a href="/">binary;</a></h1>
+        <div class="nav">
+            <ul>
+                <li><a href="#">LOGIN</a></li>
+                <li><a href="#" id="now">공지사항</a></li>
+                <li><a href="#">수상내역</a></li>
+                <li><a href="#" >동아리 소개</a></li>
+                <li><a href="#">문의 게시판</a></li>
+                <li><a href="#">활동 게시판</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="board_wrap">
+        <div class="board_title">
+            <!-- 바디부분 제목 -->
+            <strong>공지사항</strong>
+            <!-- <p>공지사항을 빠르고 정확하게 안내해드립니다.</p> -->
+        </div>
+        <form action="#" th:action="@{/notice/write}" th:object="${notice}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <div class="board_write_wrap">
+                <div class="board_write">
+                    <div class="title">
+                        <dl>
+                            <!--공지사항 제목 입력 부분 -->
+                            <dt>제목</dt>
+                            <dd><input type="text" placeholder="제목 입력" th:field="*{title}"></dd>
+                        </dl>
+                    </div>
+                    <!--공지사항 내용 입력 부분-->
+                    <div class="cont">
+                        <textarea placeholder="내용 입력" th:field="*{content}"></textarea>
+                    </div>
+                </div>
+                <!-- 공지사항 등록과 취소 버튼 부분 -->
+                <div class="bt_wrap">
+                    <button type="submit" class="on">등록</button>
+                    <button type="button" onclick="location.href='/notice'">취소</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- 화면 아래 푸터 부분 -->
+<footer id="footer">
+    <p>Address : 서울특별시 광진구 능동로 209</p>
+    <!-- 푸터 링크 클릭 시 새 창 새 탭으로 이동하여 링크 열기 -->
+    <p>Contact us : <a href="https://open.kakao.com/o/sJiqCFKd" target="_blank">https://open.kakao.com/o/sJiqCFKd</a>
+    </p>
+    <p>Designed by : 신아진, 이은서, 박도성</p>
+    <br>
+</footer>
+</body>
+</html>

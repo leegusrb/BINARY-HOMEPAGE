@@ -29,9 +29,9 @@
     padding: 0;
 }
 .speech-bubble03 {
-    position: relative;
+	position: relative;
     background:#d3d8d9;
-    border-radius: .4em;
+	border-radius: .4em;
     width: 35rem;
 
     font-size: 1.25rem;
@@ -44,18 +44,18 @@
     float:left;
 }
 .speech-bubble03:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 0;
-    height: 0;
-    border: 0.67em solid transparent;
-    border-right-color: #d3d8d9;
-    border-left: 0;
-    border-bottom: 0;
-    margin-top: -0.281em;
-    margin-left: -0.562em;
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 0.67em solid transparent;
+	border-right-color: #d3d8d9;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -0.281em;
+	margin-left: -0.562em;
 }
 .img03 {
     width: inherit;
@@ -150,4 +150,4 @@
     #title03-05 {
         margin: 5rem 0;
     }
-}
+ }
