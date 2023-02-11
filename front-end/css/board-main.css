@@ -5,7 +5,6 @@
     width: -webkit-fill-available;
 }
 .tg td{
-    background-color:#EBF5FF;
     border-color:#9ABAD9;
     border-style:solid;
     border-width:0px;
@@ -15,6 +14,7 @@
     overflow:hidden;
     padding:11px 20px;
     word-break:normal;
+    border-bottom: 1px solid gray;
 }
 .tg th{
     background-color:#409cff;
