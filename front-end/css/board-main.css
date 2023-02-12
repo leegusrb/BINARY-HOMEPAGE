@@ -52,7 +52,9 @@
     display: flex;
     justify-content: flex-end;
 }
-
+#page-on{  /* 메뉴들중에 접속중인 해당 페이지에 불들어오는 효과*/
+    color:#214e7e;
+}
 button{
     margin: 1em 1em;
     border: 1px solid #409cff;
