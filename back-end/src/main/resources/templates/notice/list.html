@@ -126,13 +126,13 @@
                     </div>
                     <div class="paging">
                         <!-- 바디 부분 하단 다음페이지, 전 페이지 버튼 부분 -->
-                        <a href="/#" class="bt first">처음</a>
-                        <a href="/#" class="bt prev">이전</a>
-                        <a href="/#" class="num" id="num-on">1</a>
-                        <a href="/#" class="num">2</a>
-                        <a href="/#" class="num">3</a>
-                        <a href="/#" class="bt next">다음</a>
-                        <a href="/#" class="bt last">끝</a>
+                        <a th:href="@{/notice(page=0)}" class="bt first">처음</a>
+                        <a th:if="${0 != currentPage}" th:href="@{/notice(page=${currentPage - 1})}" class="bt prev">이전</a>
+                        <th:block th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                            <a th:href="@{/notice(page=${i})}" class="num" th:classappend="${i == currentPage} ? 'num-on'" th:text="${i + 1}">1</a>
+                        </th:block>
+                        <a th:if="${endPage != currentPage}" th:href="@{/notice(page=${currentPage + 1})}" class="bt next">다음</a>
+                        <a th:href="@{/notice(page=${notices.getTotalPages() - 1})}" class="bt last">끝</a>
                     </div>
                 </div>
             </div>
