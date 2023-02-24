@@ -28,21 +28,17 @@
 
 <body>
 <!--/ Nav Star /-->
-<nav
-        class="navbar navbar-b navbar-trans navbar-expand-md fixed-top"
-        id="mainNav"
->
+<nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top"
+     id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll" href="/">BINARY</a>
-        <button
-                class="navbar-toggler collapsed"
+        <a class="navbar-brand js-scroll" href="index.html">BINARY</a>
+        <button class="navbar-toggler collapsed"
                 type="button"
                 data-toggle="collapse"
                 data-target="#navbarDefault"
                 aria-controls="navbarDefault"
                 aria-expanded="false"
-                aria-label="Toggle navigation"
-        >
+                aria-label="Toggle navigation">
             <span></span>
             <span></span>
             <span></span>
@@ -51,10 +47,8 @@
 </nav>
 <!--/ Nav End /-->
 
-<section
-        class="paralax-mf footer-paralax bg-image route"
-        style="background-image: url(/img/overlay-bg.jpg)"
->
+<section class="paralax-mf footer-paralax bg-image route"
+         style="background-image: url(/img/overlay-bg.jpg)">
     <div class="overlay-mf"></div>
     <div class="container">
         <div class="row">
@@ -71,23 +65,27 @@
                                 <h5 class="list">비밀번호 변경</h5>
                             </div>
                             <div class="col-md-9">
-                                <form method="" class="form-div">
-                                    <label class="row">
-                                        <span class="col-sm-5">기존 비밀번호</span>
-                                        <input class="col-md-6" type="text" required/>
-                                    </label>
-                                    <br/>
+                                <form th:action="'/myPage/' + ${studentId} + '/updatePassword'" method="post" class="form-div"
+                                      th:object="${passwordForm}">
+                                    <!--                                    <label class="row">-->
+                                    <!--                                        <span class="col-sm-5">기존 비밀번호</span>-->
+                                    <!--                                        <input class="col-md-6" type="text" required/>-->
+                                    <!--                                    </label>-->
+                                    <!--                                    <br/>-->
                                     <label class="row">
                                         <span class="col-sm-5">새 비밀번호</span>
-                                        <input class="col-md-6" type="text" required/>
+                                        <input class="col-md-6" type="password" th:field="*{newPassword}"/>
+                                        <div th:if="${#fields.hasErrors('newPassword')}" th:errors="*{newPassword}" class="alert alert-danger" role="alert">
+                                            아이디나 비밀번호가 잘못되었습니다.
+                                        </div>
                                     </label>
                                     <br/>
                                     <label class="row">
                                         <span class="col-sm-5">새 비밀번호 재입력</span>
-                                        <input class="col-md-6" type="text" required/>
+                                        <input class="col-md-6" type="password" th:field="*{newPasswordConfirm}"/>
                                     </label>
                                     <br/>
-                                    <button type="button" class="btn btn-primary passwordBtn">
+                                    <button type="submit" class="btn btn-primary passwordBtn">
                                         Change
                                     </button>
                                 </form>
@@ -99,15 +97,14 @@
                                 <h5 class="list">상세정보 변경</h5>
                             </div>
                             <div class="col-md-9">
-                                <form th:action="'/myPage/' + ${studentId} + '/updateInfo'" method="post" class="form-div" th:object="${memberForm}">
+                                <form th:action="'/myPage/' + ${studentId} + '/updateInfo'" method="post"
+                                      class="form-div" th:object="${memberForm}">
                                     <input type="hidden" th:field="*{id}">
                                     <label class="row">
                                         <span class="col-sm-5">한 줄 소개</span>
-                                        <input
-                                                class="col-md-6"
-                                                type="text"
-                                                th:field="*{introduce}"
-                                        />
+                                        <input class="col-md-6"
+                                               type="text"
+                                               th:field="*{introduce}"/>
                                     </label>
                                     <br/>
                                     <label class="row">
@@ -150,14 +147,10 @@
                                         <!-- 주소 추가 -->
                                         <div class="add-link">
                                             <label class="row">
-                                                <input
-                                                        class="col-md-10 add-input-link"
-                                                        type="text"
-                                                />
-                                                <button
-                                                        type="button"
-                                                        class="btn btn-light link-btn"
-                                                >
+                                                <input class="col-md-10 add-input-link"
+                                                       type="text"/>
+                                                <button type="button"
+                                                        class="btn btn-light link-btn">
                                                     추가
                                                 </button>
                                             </label>
@@ -178,7 +171,7 @@
 </section>
 <!--/ Section Contact-footer End /-->
 
-<a href="/#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <div id="preloader"></div>
 
 <!-- JavaScript Libraries -->

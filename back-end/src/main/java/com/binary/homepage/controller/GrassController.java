@@ -21,7 +21,7 @@ public class GrassController {
     public String grass(Model model) {
         List<Grass> ranking = grassService.findRanking();
         model.addAttribute("ranking", ranking);
-        model.addAttribute("grassService", grassService);
+        model.addAttribute("service", grassService);
         return("grass");
     }
 }

@@ -10,8 +10,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect;
 
 import javax.sql.DataSource;
+import javax.swing.*;
 
 @Configuration
 @EnableWebSecurity
@@ -22,16 +24,19 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+        http.headers().frameOptions().sameOrigin();
+
         http
                 .authorizeHttpRequests((requests) -> requests
-//                        .antMatchers("/").authenticated()
+                        .antMatchers("/myPage/*/updateInfo").authenticated()
                         .anyRequest().permitAll()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .usernameParameter("student_id")
                         .passwordParameter("password")
-                        .permitAll()
+//                        .permitAll()
                 )
                 .logout((logout) -> logout.permitAll());
 

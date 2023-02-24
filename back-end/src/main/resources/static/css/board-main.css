@@ -1,0 +1,134 @@
+.tg  {
+    border-collapse:collapse;
+    border-color:#9ABAD9;
+    border-spacing:0;
+    width: -webkit-fill-available;
+}
+.tg td{
+    border-color:#9ABAD9;
+    border-style:solid;
+    border-width:0px;
+    color:#444;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    overflow:hidden;
+    padding:11px 20px;
+    word-break:normal;
+    border-bottom: 1px solid gray;
+}
+.tg th{
+    background-color:#409cff;
+    border-color:#9ABAD9;
+    border-style:solid;
+    border-width:0px;
+    color:#fff;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    font-weight:normal;
+    overflow:hidden;
+    padding:11px 20px;
+    word-break:normal;
+}
+.tg .tg-9wq8{
+    border-color:inherit;
+    text-align:center;
+    vertical-align:middle
+}
+.tg .tg-c3ow{
+    border-color:inherit;
+    text-align:center;
+    vertical-align:top
+}
+.tg .tg-c3ow-title{
+    border-color:inherit;
+    text-align:center;
+    vertical-align:top
+}
+.tg .tg-c3ow-title:hover{
+    color:#409cff;
+    cursor: pointer;
+}
+.bt_se{
+    display: flex;
+    justify-content: flex-end;
+}
+#page-on{  /* 메뉴들중에 접속중인 해당 페이지에 불들어오는 효과*/
+    color:#214e7e;
+}
+button{
+    margin: 1em 1em;
+    border: 1px solid #409cff;
+    padding: 7px 10px;
+    background-color: white;
+    color: #409cff;
+    font-size: small;
+    font-weight: bold;
+    border-radius: 5px;
+}
+button:hover{
+    background-color: #409cff;
+    color:white;
+    cursor: pointer;
+}
+
+@media (min-width: 1200px){
+    .container {
+        max-width: 1300px;
+    }
+}
+@media (min-width: 768px){
+    .col-md-8 {
+        -ms-flex: 0 0 66.666667%;
+        flex: 0 0 71.5%;
+        max-width: 70%;
+    }
+    .col-md-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 30%;
+    }
+    .post-box{
+        padding:2em;
+    }    
+}
+
+/* 게시판 하단 페이지 부분 꾸미기 */
+.paging {
+    text-align: center;
+}
+
+.paging a {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+/* 페이지 넘기기 버튼들 */
+.paging a.bt {
+    width: 30px;
+    height: 30px;
+    color:gray;
+    text-align: center;
+    font-size:smaller;
+    line-height: 30px;
+}
+.paging a.bt:hover {
+    background-color: #409cff;
+    color:white;
+    cursor: pointer;
+}
+/* 1,2,3 페이지 숫자 버튼 */
+.paging a.num{
+    width: 30px;
+    height: 30px;
+    line-height: 25px;
+}
+#num-on{  /* 현재 접속중인 페이지수 버튼에 불 들어오기*/
+    background-color: #409cff;
+    color:white;
+}
+/* 페이지 부분 마우스 올려놓을때 변화 지정 */
+.paging a.num:hover {
+    background-color: #409cff;
+    color:white;
+    cursor: pointer;
+}

@@ -1,15 +1,15 @@
 package com.binary.homepage.controller;
 
-import com.binary.homepage.domain.Notice;
-import com.binary.homepage.repository.NoticeRepository;
+import com.binary.homepage.domain.board.Notice;
 import com.binary.homepage.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -18,33 +18,27 @@ import java.util.List;
 public class NoticeController {
 
     private final NoticeService noticeService;
-    private final NoticeRepository noticeRepository;
 
-    @GetMapping("/list")
-    public String notice(Model model) {
+    @GetMapping("")
+    public String noticeList(Model model) {
         List<Notice> notices = noticeService.findAll();
         model.addAttribute("notices", notices);
-        return "notice";
+        return "notice/list";
     }
 
-    @GetMapping("/write")
-    public String form(Model model, @RequestParam(required = false) Long id) {
-        if (id == null) {
-            model.addAttribute("notice", new Notice());
-        } else {
-            Notice notice = noticeRepository.findById(id).orElse(null);
-            model.addAttribute("notice", notice);
-        }
+    @GetMapping("/view/{id}")
+    @Transactional
+    public String noticeView(@PathVariable Long id, Model model) {
+        Notice notice = noticeService.findOne(id);
 
-        return "write";
+        notice.increaseView();
+
+        model.addAttribute("notice", notice);
+        return "notice/view";
     }
 
-    @PostMapping("/write")
-    public String formSubmit(@Valid Notice notice, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "write";
-        }
-        noticeService.save(notice);
-        return "redirect:/notice/list";
+    @GetMapping("/write/{id}")
+    public String noticeWrite(@PathVariable Long id) {
+        return "notice/write";
     }
 }

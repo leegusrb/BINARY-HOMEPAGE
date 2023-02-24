@@ -1,9 +1,12 @@
 package com.binary.homepage.domain;
 
+import com.binary.homepage.domain.board.Notice;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -29,10 +32,19 @@ public class Member {
 
     private String introduce;
 
+    private int warning;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "grass_id")
     private Grass grass;
+
+    @OneToMany(mappedBy = "member")
+    private List<Notice> notices = new ArrayList<>();
+
+    public void updatePassword(String newPassword) {
+        this.password = newPassword;
+    }
 }

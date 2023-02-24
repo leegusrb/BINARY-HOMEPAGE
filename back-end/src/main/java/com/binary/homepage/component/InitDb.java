@@ -1,11 +1,13 @@
 package com.binary.homepage.component;
 
-import com.binary.homepage.component.Crawling;
 import com.binary.homepage.domain.Grass;
 import com.binary.homepage.domain.GrassInfo;
 import com.binary.homepage.domain.Member;
 import com.binary.homepage.domain.Role;
+import com.binary.homepage.domain.board.Notice;
 import com.binary.homepage.service.GrassService;
+import com.binary.homepage.service.MemberService;
+import com.binary.homepage.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -105,11 +110,19 @@ public class InitDb {
 
     private final InitService initService;
     private final GrassService grassService;
+    private final NoticeService noticeService;
+    private final MemberService memberService;
 
 
     @PostConstruct
     public void init() {
 //        initService.dbInit();
+//        for (int i = 0; i < 100; i++) {
+//            Notice notice1 = Notice.createNotice("title" + i, "content" + i, memberService.findOne(21011872));
+//            Notice notice2 = Notice.createNotice("title" + i, "content" + i, memberService.findOne(22011989));
+//            noticeService.save(notice1);
+//            noticeService.save(notice2);
+//        }
     }
 
     @Component

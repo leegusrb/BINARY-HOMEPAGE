@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <title>BINARY</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="" name="keywords"/>
+    <meta content="" name="description"/>
 
     <!-- Favicons -->
     <link href="/img/favicon.png" rel="icon">
@@ -36,11 +36,17 @@
 
 <body>
 <!--/ Nav Star /-->
-<nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
+<nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top"
+     id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll" href="/">BINARY</a>
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-                aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler collapsed"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarDefault"
+                aria-controls="navbarDefault"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
             <span></span>
             <span></span>
             <span></span>
@@ -51,7 +57,8 @@
 
 <!--/ Section Contact-Footer Star /-->
 <!--7페이지-->
-<section class="paralax-mf footer-paralax bg-image route" style="background-image: url(/img/overlay-bg.jpg)">
+<section class="paralax-mf footer-paralax bg-image route"
+         style="background-image: url(/img/overlay-bg.jpg)">
     <div class="overlay-mf"></div>
     <div class="container">
         <div class="row">
@@ -62,40 +69,41 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="container">
-                                        <h1>
-                                            MY PAGE
-                                        </h1>
-                                        <hr class="border border-primary border-3 opacity-75">
+                                        <h1>MY PAGE</h1>
+                                        <hr class="border border-primary border-3 opacity-75"/>
 
                                         <div class="row">
+                                            <!-- profile card -->
                                             <div class="col-md-4">
-                                                <div class="card" style="width: 18rem;">
+                                                <div class="card" style="width: 18rem">
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col">
-                                                                <h4 class="card-title text-center" th:text="${member.name}">최유경</h4>
+                                                                <h4 class="card-title text-center"
+                                                                    th:text="${member.name}">최유경</h4>
                                                             </div>
                                                             <div class="col">
                                                                 <div style="float: right">
-                                                                    <img th:if="${grass.size()} < 5" src="/img/level1.png" class="img-my">
-                                                                    <img th:if="${grass.size()} >= 5 and ${grass.size()} < 15" src="/img/level2.png" class="img-my">
-                                                                    <img th:if="${grass.size()} >= 15 and ${grass.size()} < 25" src="/img/level3.png" class="img-my">
-                                                                    <img th:if="${grass.size()} >= 25 and ${grass.size()} < 30" src="/img/level4.png" class="img-my">
-                                                                    <img th:if="${grass.size()} == 30" src="/img/level5.png" class="img-my">
+                                                                    <img th:if="${grass.size()} == 0"
+                                                                         src="/img/level1.png" class="img-my">
+                                                                    <img th:if="${grass.size()} > 0 and ${grass.size()} < 5"
+                                                                         src="/img/level1.png" class="img-my">
+                                                                    <img th:if="${grass.size()} >= 5 and ${grass.size()} < 15"
+                                                                         src="/img/level2.png" class="img-my">
+                                                                    <img th:if="${grass.size()} >= 15 and ${grass.size()} < 25"
+                                                                         src="/img/level3.png" class="img-my">
+                                                                    <img th:if="${grass.size()} >= 25 and ${grass.size()} < 30"
+                                                                         src="/img/level4.png" class="img-my">
+                                                                    <img th:if="${grass.size()} == 30"
+                                                                         src="/img/level5.png" class="img-my">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p class="card-text">
-                                                            내 깃허브 주소
-                                                        </p>
-                                                        <p class="card-text">
-                                                            내 노션 주소
-                                                        </p>
+                                                        <p class="card-text" th:text="${member.introduce}">한 줄 소개</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br>
-                                            <br>
+                                            <!-- 잔디 심기 -->
                                             <div class="col-md-8">
                                                 <div class="card text-end">
                                                     <div class="card-header text-end">
@@ -105,7 +113,8 @@
                                                         <h5 class="card-title">내 텃밭</h5>
                                                         <p class="card-text">~잔디심기~</p>
                                                         <div style="float: right">
-                                                            <a type="button" class="btn btn-outline-primary" th:href="'https://www.acmicpc.net/user/' + ${member.grass.grassName}">
+                                                            <a type="button" class="btn btn-outline-primary"
+                                                               th:href="'https://www.acmicpc.net/user/' + ${member.grass.grassName}">
                                                                 물 주러가기
                                                             </a>
                                                             <!--백준사이트 연결-->
@@ -113,71 +122,86 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-                                <br>
-                                <br>
+                                <br/>
+                                <br/>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">내가 쓴 글</h5>
+                                            </div>
 
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="card" style="width: 29.5rem;">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">내가 쓴 글</h5>
-                                                </div>
-
-                                                <div class="card-body">
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">[코딩게시판] 이거 어떻게 하나요?</li>
-                                                        <li class="list-group-item">A second item</li>
-                                                        <li class="list-group-item">A third item</li>
-                                                    </ul>
-                                                    <br>
-                                                </div>
+                                            <div class="card-body">
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">
+                                                        [코딩게시판] 이거 어떻게 하나요?
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        A second item
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        A third item
+                                                    </li>
+                                                </ul>
+                                                <br/>
                                             </div>
                                         </div>
-                                        <div class="col">
-                                            <div class="card" style="width: 29.5rem;">
-                                                <div class="card-body">
-
-                                                    <h5 class="card-title">내가 한 활동</h5>
-                                                    <p class="card-text">자신이 한 활동의 노션링크를 올려보세요!</p>
-
-                                                    <ul class="nav nav-pills card-header-pills">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link active" href="/#">Study</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="/#">Project</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link disabled">Contest</a>
-                                                        </li>
-                                                    </ul>
-
-
-                                                    <div class="card-body">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5 class="card-title">내가 한 활동</h5>
                                                     </div>
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">~노션 링크~</li>
-                                                        <li class="list-group-item">~노션 링크~</li>
-                                                        <li class="list-group-item">~노션 링크~</li>
-                                                    </ul>
+                                                    <div class="col">
+                                                        <div style="float: right">
+                                                            <a th:href="${member.gitHub}">
+                                                                <img src="/img/github.png" class="img-github"/>
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
+
+                                                <p class="card-text">
+                                                    자신이 한 활동의 노션링크를 올려보세요!
+                                                </p>
+
+                                                <ul class="nav nav-pills card-header-pills">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" href="#">Study</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="#">Project</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link disabled">Contest</a>
+                                                    </li>
+                                                </ul>
+
+                                                <div class="card-body"></div>
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">~노션 링크~</li>
+                                                    <li class="list-group-item">~노션 링크~</li>
+                                                    <li class="list-group-item">~노션 링크~</li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <br>
-
-                                <div style="float: right">
-                                    <a type="button" class="btn btn-outline-secondary" th:href="'/myPage/' + ${member.studentId} + '/updateInfo'">편집</a>
-                                </div>
-
                             </div>
                         </div>
+                        <br/>
+                        <a type="button" class="btn btn-outline-secondary"
+                           th:href="'/myPage/' + ${member.studentId} + '/updateInfo'"
+                           th:if="${member.studentId} == ${currentId}">
+                            편집
+                        </a>
                     </div>
                 </div>
             </div>
@@ -186,7 +210,7 @@
 </section>
 <!--/ Section Contact-footer End /-->
 
-<a href="/#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <div id="preloader"></div>
 
 <!-- JavaScript Libraries -->

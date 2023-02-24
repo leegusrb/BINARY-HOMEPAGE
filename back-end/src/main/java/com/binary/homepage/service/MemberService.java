@@ -1,6 +1,7 @@
 package com.binary.homepage.service;
 
 import com.binary.homepage.domain.Member;
+import com.binary.homepage.repository.GrassRepository;
 import com.binary.homepage.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +17,8 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
+    private final GrassRepository grassRepository;
+    private final GrassService grassService;
 
     /**
      * 회원가입
@@ -52,9 +55,8 @@ public class MemberService {
      * 비밀번호 변경
      */
     @Transactional
-    public void changePassword(Long id, String password) {
-        Member member = memberRepository.findOne(id);
-        member.setPassword(passwordEncoder.encode(password));
+    public void updatePassword(Member member, String newPassword) {
+        member.updatePassword(passwordEncoder.encode(newPassword));
     }
 
     /**
@@ -62,8 +64,12 @@ public class MemberService {
      */
     @Transactional
     public void updateInfo(Long id, String introduce, String grassName, String gitHub) {
-        Member member = memberRepository.findOne(id);
+        Member member = memberRepository.findById(id).orElseThrow();
         member.setIntroduce(introduce);
+        if (!member.getGrass().getGrassName().equals(grassName)) {
+            grassRepository.delete(member.getGrass());
+            grassService.initGrass(member, grassName);
+        }
         member.getGrass().setGrassName(grassName);
         member.setGitHub(gitHub);
     }

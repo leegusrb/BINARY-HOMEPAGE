@@ -22,4 +22,15 @@ public class GrassInfo {
     private LocalDate date;
 
     private int num;
+
+    /**
+     * 생성 메서드
+     */
+    public static GrassInfo createGrassInfo(LocalDate date, int num) {
+        GrassInfo grassInfo = new GrassInfo();
+        grassInfo.setDate(date);
+        grassInfo.setNum(num);
+
+        return grassInfo;
+    }
 }

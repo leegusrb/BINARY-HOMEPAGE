@@ -31,4 +31,22 @@ public class Grass {
     public int getAllGrassNum() {
         return grassInfos.size();
     }
+
+    public void addGrassInfo(GrassInfo grassInfo) {
+        grassInfos.add(grassInfo);
+        grassInfo.setGrass(this);
+    }
+
+    /**
+     * 생성 메서드
+     */
+    public static Grass createGrass(Member member, String grassName, List<GrassInfo> grassInfos) {
+        Grass grass = new Grass();
+        grass.setMember(member);
+        grass.setGrassName(grassName);
+        for (GrassInfo grassInfo : grassInfos) {
+            grass.addGrassInfo(grassInfo);
+        }
+        return grass;
+    }
 }

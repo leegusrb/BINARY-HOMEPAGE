@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3306/homepage
+    url: jdbc:mariadb://localhost:3306/homepage?allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: gang3535
     driver-class-name: org.mariadb.jdbc.Driver
