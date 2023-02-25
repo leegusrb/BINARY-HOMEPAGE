@@ -46,3 +46,15 @@ login-wrapper{
 #login-form > label{
     color: #999999;
 }
+
+.logo {
+    text-align: center;
+}
+
+.login-wrapper {
+    margin: auto;
+}
+
+.logoexample {
+    width: 100%;
+}
