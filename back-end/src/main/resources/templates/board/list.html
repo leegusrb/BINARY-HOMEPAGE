@@ -109,30 +109,30 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="notice : ${notices}">
-                                <td class="tg-c3ow" th:text="${notice.id}">10</td>
-                                <td class="tg-c3ow-title"><a th:href="${'/notice/view/' + notice.id}" th:text="${notice.title}">
+                            <tr th:each="board : ${boards}">
+                                <td class="tg-c3ow" th:text="${board.id}">10</td>
+                                <td class="tg-c3ow-title"><a th:href="${'/board/view/' + board.id}" th:text="${board.title}">
                                     제목
                                 </a></td>
-                                <td class="tg-9wq8" th:text="${notice.member.name}">신아진</td>
-                                <td class="tg-c3ow" th:text="${notice.time}">2 시간 전</td>
-                                <td class="tg-c3ow" th:text="${notice.view}">1</td>
+                                <td class="tg-c3ow" th:text="${board.member.name}">신아진</td>
+                                <td class="tg-c3ow" th:text="${board.time}">2 시간 전</td>
+                                <td class="tg-c3ow" th:text="${board.view}">1</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="bt_se">
-                        <a type="button" class="btn btn-outline-secondary" th:href="@{/notice/write}">글쓰기</a>
+                        <a type="button" class="btn btn-outline-secondary" th:href="@{/board/write}">글쓰기</a>
                     </div>
                     <div class="paging">
                         <!-- 바디 부분 하단 다음페이지, 전 페이지 버튼 부분 -->
-                        <a th:href="@{/notice(page=0)}" class="bt first">처음</a>
-                        <a th:if="${0 != currentPage}" th:href="@{/notice(page=${currentPage - 1})}" class="bt prev">이전</a>
+                        <a th:href="@{/board(page=0)}" class="bt first">처음</a>
+                        <a th:if="${0 != currentPage}" th:href="@{/board(page=${currentPage - 1})}" class="bt prev">이전</a>
                         <th:block th:each="i : ${#numbers.sequence(startPage, endPage)}">
-                            <a th:href="@{/notice(page=${i})}" class="num" th:classappend="${i == currentPage} ? 'num-on'" th:text="${i + 1}">1</a>
+                            <a th:href="@{/board(page=${i})}" class="num" th:classappend="${i == currentPage} ? 'num-on'" th:text="${i + 1}">1</a>
                         </th:block>
-                        <a th:if="${endPage != currentPage}" th:href="@{/notice(page=${currentPage + 1})}" class="bt next">다음</a>
-                        <a th:href="@{/notice(page=${notices.getTotalPages() - 1})}" class="bt last">끝</a>
+                        <a th:if="${endPage != currentPage}" th:href="@{/board(page=${currentPage + 1})}" class="bt next">다음</a>
+                        <a th:href="@{/board(page=${boards.getTotalPages() - 1})}" class="bt last">끝</a>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
   <th:block th:replace="/fragment/header :: header('BINARY')"></th:block>
-  <link href="css/board-write.css" rel="stylesheet">
+  <link href="/css/board-write.css" rel="stylesheet">
 </head>
 
 <body>
@@ -61,12 +61,13 @@
                 공지사항 글 작성하기
               </h3>
             </div>
-            <form class="form-mf">
+            <form class="form-mf" th:action="@{/board/write}" th:object="${board}" method="post">
+              <input type="hidden" th:field="*{member}">
               <div class="row">
                 <div class="col-md-12 mb-3">
                   <div class="form-group">
                     <span class="write-title">제목</span>
-                    <input type="text" class="form-control input-mf" id="inputTitle" placeholder="제목을 입력해주세요.">
+                    <input type="text" class="form-control input-mf" id="inputTitle" placeholder="제목을 입력해주세요." th:field="*{title}">
                   </div>
                   <div class="form-group">
                     <span class="write-title">파일</span>
@@ -75,8 +76,7 @@
                 </div>
                 <div class="col-md-12 mb-3">
                   <div class="form-group">
-                    <!-- <iframe src="editor.html" id="inputContent"></iframe>  -->
-                    <textarea rows="10" cols="100" id="inputContent" style="resize: none"></textarea>
+                    <textarea rows="10" cols="100" id="inputContent" style="resize: none" th:field="*{content}"></textarea>
                   </div>
                 </div>
                 <div class="col-md-12" style="display: flex; justify-content: center;">

@@ -1,13 +1,15 @@
 package com.binary.homepage.component;
 
+import com.binary.homepage.component.csv.CsvReader;
+import com.binary.homepage.component.csv.CsvWriter;
 import com.binary.homepage.domain.Grass;
 import com.binary.homepage.domain.GrassInfo;
 import com.binary.homepage.domain.Member;
 import com.binary.homepage.domain.Role;
-import com.binary.homepage.domain.board.Notice;
+import com.binary.homepage.domain.board.Board;
 import com.binary.homepage.service.GrassService;
 import com.binary.homepage.service.MemberService;
-import com.binary.homepage.service.NoticeService;
+import com.binary.homepage.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -16,9 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -110,18 +109,20 @@ public class InitDb {
 
     private final InitService initService;
     private final GrassService grassService;
-    private final NoticeService noticeService;
+    private final BoardService boardService;
     private final MemberService memberService;
+    private final CsvReader csvReader;
+    private final CsvWriter csvWriter;
 
 
     @PostConstruct
     public void init() {
 //        initService.dbInit();
 //        for (int i = 0; i < 100; i++) {
-//            Notice notice1 = Notice.createNotice("title" + i, "content" + i, memberService.findOne(21011872));
-//            Notice notice2 = Notice.createNotice("title" + i, "content" + i, memberService.findOne(22011989));
-//            noticeService.save(notice1);
-//            noticeService.save(notice2);
+//            Board notice1 = Board.createBoard("notice", "title" + i, "content" + i, memberService.findOne(21011872));
+//            Board notice2 = Board.createBoard("notice", "title" + i, "content" + i, memberService.findOne(22011989));
+//            boardService.save(notice1);
+//            boardService.save(notice2);
 //        }
     }
 

@@ -122,7 +122,7 @@ button:hover{
     height: 30px;
     line-height: 25px;
 }
-.num-on{  /* 현재 접속중인 페이지수 버튼에 불 들어오기*/
+#num-on{  /* 현재 접속중인 페이지수 버튼에 불 들어오기*/
     background-color: #409cff;
     color:white;
 }

@@ -24,3 +24,12 @@ body{
 .img-github{
     height: 2.5rem;
 }
+
+.card-div {
+    height: 100%;
+}
+
+.img-div {
+    text-align: center;
+    margin : 3% 0;
+}

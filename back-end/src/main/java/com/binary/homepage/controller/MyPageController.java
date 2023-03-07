@@ -52,7 +52,8 @@ public class MyPageController {
         MemberForm memberForm = new MemberForm();
         memberForm.setId(member.getId());
         memberForm.setIntroduce(member.getIntroduce());
-        memberForm.setGrassName(member.getGrass().getGrassName());
+        if (member.getGrass() != null)
+            memberForm.setGrassName(member.getGrass().getGrassName());
         memberForm.setGitHub(member.getGitHub());
 
         model.addAttribute("memberForm", memberForm);

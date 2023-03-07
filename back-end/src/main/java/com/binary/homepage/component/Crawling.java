@@ -22,15 +22,13 @@ public class Crawling {
     public String[] getGrassData(String grassName) {
         Connection conn = Jsoup.connect(url + grassName);
 
-        Document document = null;
+        Document document;
 
         try {
             document = conn.get();
         } catch (IOException e) {
-            e.printStackTrace();
+            return null;
         }
-
-        if (document == null) return null;
 
         String grassData = "";
         Elements selects = document.select("script");
@@ -47,6 +45,8 @@ public class Crawling {
 
     public GrassInfo getTodayGrassData(String grassName) {
         String[] grassData = getGrassData(grassName);
+
+        if (grassData == null) return null;
 
         for (String grassStr : grassData) {
             String[] splitInfo = grassStr.split(",");
@@ -69,6 +69,8 @@ public class Crawling {
     public List<GrassInfo> listGrassInfo(String grassName) {
         List<GrassInfo> grassInfos = new ArrayList<>();
         String[] grassData = getGrassData(grassName);
+
+        if (grassData == null) return null;
 
         for (String grassInfo : grassData) {
             String[] splitInfo = grassInfo.split(",");

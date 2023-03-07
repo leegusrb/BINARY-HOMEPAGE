@@ -27,6 +27,8 @@ dependencies {
 
 	implementation 'org.jsoup:jsoup:1.15.3'
 
+	implementation 'org.springframework.boot:spring-boot-starter-batch'
+
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	implementation 'org.springframework.security:spring-security-test'

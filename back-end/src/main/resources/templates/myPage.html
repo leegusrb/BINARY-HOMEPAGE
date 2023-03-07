@@ -39,7 +39,7 @@
 <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top"
      id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll" href="/">BINARY</a>
+        <a class="navbar-brand js-scroll" th:href="@{/}">BINARY</a>
         <button class="navbar-toggler collapsed"
                 type="button"
                 data-toggle="collapse"
@@ -75,12 +75,23 @@
                                         <div class="row">
                                             <!-- profile card -->
                                             <div class="col-md-4">
-                                                <div class="card" style="width: 18rem">
+                                                <div class="card" style="width: 100%">
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col">
                                                                 <h4 class="card-title text-center"
-                                                                    th:text="${member.name}">최유경</h4>
+                                                                    th:text="${member.name}">
+                                                                    최유경
+                                                                </h4>
+                                                                <div class="row">
+                                                                    <div class="col img-div">
+                                                                        <img src="/img/github.png" class="img-github"/>
+                                                                    </div>
+                                                                    <div class="col img-div">
+                                                                        <img src="/img/darkPencile.png"
+                                                                             class="img-github"/>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <div class="col">
                                                                 <div style="float: right">
@@ -100,19 +111,27 @@
                                                             </div>
                                                         </div>
                                                         <p class="card-text" th:text="${member.introduce}">한 줄 소개</p>
+
+                                                        <div style="float: right">
+                                                            <form th:action="@{/logout}" method="post">
+                                                                <button type="submit" class="btn btn-light">
+                                                                    Log out
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- 잔디 심기 -->
                                             <div class="col-md-8">
-                                                <div class="card text-end">
+                                                <div class="card text-end card-div">
                                                     <div class="card-header text-end">
                                                         <span th:text="${grass.size()}">0</span>/30 달성!
                                                     </div>
                                                     <div class="card-body">
                                                         <h5 class="card-title">내 텃밭</h5>
                                                         <p class="card-text">~잔디심기~</p>
-                                                        <div style="float: right">
+                                                        <div style="float: right" th:if="${member.grass} != null">
                                                             <a type="button" class="btn btn-outline-primary"
                                                                th:href="'https://www.acmicpc.net/user/' + ${member.grass.grassName}">
                                                                 물 주러가기

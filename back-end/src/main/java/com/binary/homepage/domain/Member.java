@@ -1,6 +1,6 @@
 package com.binary.homepage.domain;
 
-import com.binary.homepage.domain.board.Notice;
+import com.binary.homepage.domain.board.Board;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,7 +32,7 @@ public class Member {
 
     private String introduce;
 
-    private int warning;
+    private int warningNum;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -42,9 +42,10 @@ public class Member {
     private Grass grass;
 
     @OneToMany(mappedBy = "member")
-    private List<Notice> notices = new ArrayList<>();
+    private List<Board> boards = new ArrayList<>();
 
     public void updatePassword(String newPassword) {
         this.password = newPassword;
     }
+
 }

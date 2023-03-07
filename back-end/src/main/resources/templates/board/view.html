@@ -101,11 +101,11 @@
                 <div class="post-box">
                     <div id="board_read">
                         <div class="bo-title">
-                            <h3 class="title-left" th:text="${notice.title}">제목입니다.</h3>
+                            <h3 class="title-left" th:text="${board.title}">제목입니다.</h3>
                             <div id="user_info" style="float:right;">
-                                <span th:text="${notice.member.name}">신아진</span>
-                                <span th:text="${notice.time}">2022-02-01</span>
-                                조회:<span th:text="${notice.view}">1</span>
+                                <span th:text="${board.member.name}">신아진</span>
+                                <span th:text="${board.time}">2022-02-01</span>
+                                조회:<span th:text="${board.view}">1</span>
                                 <div id="bo_line"></div>
                             </div>
                         </div>
@@ -119,20 +119,20 @@
                             </ul>
                         </div>
 
-                        <div id="bo_content" th:text="${notice.content}">
+                        <div id="bo_content" th:text="${board.content}">
                             content
                         </div>
                         <!-- 여기에 좋아요 기능 추후 업데이트 -->
                         <!-- 목록, 수정, 삭제 -->
                         <div id="bo_ser">
                             <ul class="bo_ser_ul">
-                                <li class="bo_ser_li"><a th:href="@{/notice/view/{id}(id = ${notice.id - 1})}">이전글</a></li>
+                                <li class="bo_ser_li"><a th:href="@{/board/view/{id}(id = ${board.id - 1})}">이전글</a></li>
                             </ul>
                             <ul class="bo_ser_ul">
-                                <li class="bo_ser_li"><a th:href="@{/notice}">목록으로</a></li>
+                                <li class="bo_ser_li"><a th:href="@{/board}">목록으로</a></li>
                             </ul>
                             <ul class="bo_ser_ul">
-                                <li class="bo_ser_li"><a th:href="@{/notice/view/{id}(id = ${notice.id + 1})}">다음글</a></li>
+                                <li class="bo_ser_li"><a th:href="@{/board/view/{id}(id = ${board.id + 1})}">다음글</a></li>
                             </ul>
                         </div>
                         <!--- 댓글 불러오기 -->

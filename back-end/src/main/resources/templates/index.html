@@ -1,6 +1,6 @@
 <!-- tip : Ctrl+/ 하면 해당 줄이나 구역 한 번에 주석처리 가능-->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <th:block th:replace="/fragment/header :: header('BINARY')"></th:block>
     <link href="/css/02.css" rel="stylesheet">
@@ -351,7 +351,7 @@
             <div class="col-md-4">
                 <div class="service-box">
                     <div class="service-ico">
-                        <a th:href="@{/notice}"><span class="ico-circle"><i class="ion-ios-star"></i></span></a>
+                        <a th:href="@{/board}"><span class="ico-circle"><i class="ion-ios-star"></i></span></a>
                     </div>
                     <div class="service-content text-center">
                         <br>
@@ -365,7 +365,7 @@
             <div class="col-md-4">
                 <div class="service-box">
                     <div class="service-ico">
-                        <a th:href="@{/notice}"><span class="ico-circle"><i class="ion-bookmark"></i></span></a>
+                        <a th:href="@{/board}"><span class="ico-circle"><i class="ion-bookmark"></i></span></a>
                     </div>
                     <div class="service-content text-center">
                         <br>
@@ -379,7 +379,7 @@
             <div class="col-md-4">
                 <div class="service-box">
                     <div class="service-ico">
-                        <a th:href="@{/notice}"><span class="ico-circle"><i class="ion-social-github"></i></span></a>
+                        <a th:href="@{/board}"><span class="ico-circle"><i class="ion-social-github"></i></span></a>
                     </div>
                     <div class="service-content text-center">
                         <br>
@@ -407,7 +407,7 @@
             <div class="col-md-4">
                 <div class="service-box">
                     <div class="service-ico">
-                        <a th:href="@{/notice}"><span class="ico-circle"><i class="ion-card"></i></span></a>
+                        <a th:href="@{/board}"><span class="ico-circle"><i class="ion-card"></i></span></a>
                     </div>
                     <div class="service-content text-center">
                         <br>
@@ -421,7 +421,7 @@
             <div class="col-md-4">
                 <div class="service-box">
                     <div class="service-ico">
-                        <a th:href="@{/notice}"><span class="ico-circle"><i class="ion-chatbubbles"></i></span></a>
+                        <a th:href="@{/board}"><span class="ico-circle"><i class="ion-chatbubbles"></i></span></a>
                     </div>
                     <div class="service-content text-center">
                         <br>
@@ -453,7 +453,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" th:object="${ranking}">
+        <div class="row" th:if="${ranking.size() >= 3}" th:object="${ranking}">
             <div class="col-md-4" th:each="grass, grassState : *{subList(0, 3)}">
                 <div class="work-box">
                     <a th:href="'/myPage/' + ${grass.member.studentId}">

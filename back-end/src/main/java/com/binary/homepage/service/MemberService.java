@@ -1,6 +1,10 @@
 package com.binary.homepage.service;
 
+import com.binary.homepage.component.Crawling;
+import com.binary.homepage.domain.Grass;
+import com.binary.homepage.domain.GrassInfo;
 import com.binary.homepage.domain.Member;
+import com.binary.homepage.domain.Role;
 import com.binary.homepage.repository.GrassRepository;
 import com.binary.homepage.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +23,7 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
     private final GrassRepository grassRepository;
     private final GrassService grassService;
+    private final Crawling crawling;
 
     /**
      * 회원가입
@@ -66,12 +71,33 @@ public class MemberService {
     public void updateInfo(Long id, String introduce, String grassName, String gitHub) {
         Member member = memberRepository.findById(id).orElseThrow();
         member.setIntroduce(introduce);
-        if (!member.getGrass().getGrassName().equals(grassName)) {
+        if (member.getGrass() == null) {
+            if (!grassName.isEmpty()) {
+                List<GrassInfo> grassInfos = crawling.listGrassInfo(grassName);
+                if (grassInfos != null) {
+                    Grass grass = Grass.createGrass(member, grassName, grassInfos);
+                    member.setGrass(grass);
+                    member.getGrass().setGrassName(grassName);
+                }
+            }
+        }
+        else if (!member.getGrass().getGrassName().equals(grassName)) {
             grassRepository.delete(member.getGrass());
             grassService.initGrass(member, grassName);
         }
-        member.getGrass().setGrassName(grassName);
         member.setGitHub(gitHub);
     }
 
+
+    public Member createMember(int studentId, String name, int generation, String password) {
+        Member member = new Member();
+        member.setStudentId(studentId);
+        member.setName(name);
+        member.setGeneration(generation);
+        member.setPassword(passwordEncoder.encode(password));
+        member.setWarningNum(0);
+        member.setRole(Role.MEMBER);
+        member.setEnabled(true);
+        return member;
+    }
 }

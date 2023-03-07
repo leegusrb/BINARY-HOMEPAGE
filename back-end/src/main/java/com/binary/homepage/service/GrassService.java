@@ -61,7 +61,8 @@ public class GrassService {
             Grass grass = member.getGrass();
             if (grass != null) {
                 GrassInfo todayGrassInfo = crawling.getTodayGrassData(grass.getGrassName());
-                grass.addGrassInfo(todayGrassInfo);
+                if (todayGrassInfo != null)
+                    grass.addGrassInfo(todayGrassInfo);
             }
         }
     }
@@ -74,6 +75,7 @@ public class GrassService {
     @Transactional
     public void initGrass(Member member, String grassName) {
         List<GrassInfo> grassInfos = crawling.listGrassInfo(grassName);
+        if (grassInfos == null) return;
         Grass grass = Grass.createGrass(member, grassName, grassInfos);
         grassRepository.save(grass);
     }
