@@ -69,14 +69,19 @@ public class GrassService {
 
     public List<GrassInfo> getMonthGrass(Grass grass) {
         LocalDate start = LocalDate.now().plusDays(-31);
-        return grassInfoRepository.findAllByGrassEqualsAndDateIsAfter(grass, start);
+        LocalDate end = LocalDate.now();
+        return grassInfoRepository.findAllByGrassEqualsAndDateIsAfterAndDateIsBefore(grass, start, end);
     }
 
     @Transactional
-    public void initGrass(Member member, String grassName) {
+    public void initGrass(Grass grass, String grassName) {
         List<GrassInfo> grassInfos = crawling.listGrassInfo(grassName);
         if (grassInfos == null) return;
-        Grass grass = Grass.createGrass(member, grassName, grassInfos);
-        grassRepository.save(grass);
+        for (GrassInfo grassInfo :
+                grassInfos) {
+            grassInfo.setGrass(grass);
+        }
+        grass.setGrassInfos(grassInfos);
+        grassInfoRepository.saveAll(grassInfos);
     }
 }

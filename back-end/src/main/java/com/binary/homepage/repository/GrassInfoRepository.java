@@ -9,5 +9,7 @@ import java.util.List;
 
 public interface GrassInfoRepository extends JpaRepository<GrassInfo, Long> {
 
-    List<GrassInfo> findAllByGrassEqualsAndDateIsAfter(Grass grass, LocalDate date);
+    List<GrassInfo> findAllByGrassEqualsAndDateIsAfterAndDateIsBefore(Grass grass, LocalDate start, LocalDate end);
+
+    List<GrassInfo> findAllByGrass(Grass grass);
 }

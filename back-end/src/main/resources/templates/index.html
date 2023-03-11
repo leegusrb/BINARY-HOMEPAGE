@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <th:block th:replace="/fragment/header :: header('BINARY')"></th:block>
+    <th:block th:replace="fragment/header :: header('BINARY')"></th:block>
     <link href="/css/02.css" rel="stylesheet">
     <link href="/css/03.css" rel="stylesheet">
     <link href="/css/04.css" rel="stylesheet">
@@ -12,7 +12,7 @@
 <body id="page-top">
 
 <!--/ Nav Start /-->
-<nav th:replace="/fragment/navbar :: navbar"></nav>
+<nav th:replace="fragment/navbar :: navbar"></nav>
 <!--/ Nav End /-->
 
 <!--/ Intro Skew Star /-->
@@ -487,11 +487,11 @@
 <!--/ Section Portfolio End /-->
 <!--정지윤 끝-->
 
-<section th:replace="/fragment/footer :: footer"></section>
+<section th:replace="fragment/footer :: footer"></section>
 
 <a href="/#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <div id="preloader"></div>
 
-<th:block th:replace="/fragment/script :: script"></th:block>
+<th:block th:replace="fragment/script :: script"></th:block>
 </body>
 </html>

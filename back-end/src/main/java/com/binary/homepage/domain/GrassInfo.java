@@ -18,7 +18,6 @@ public class GrassInfo {
     @JoinColumn(name = "grass_id")
     private Grass grass;
 
-    @Column
     private LocalDate date;
 
     private int num;

@@ -96,7 +96,7 @@
                                                             <div class="col">
                                                                 <div style="float: right">
                                                                     <img th:if="${grass.size()} == 0"
-                                                                         src="/img/level1.png" class="img-my">
+                                                                         src="/img/level0.png" class="img-my">
                                                                     <img th:if="${grass.size()} > 0 and ${grass.size()} < 5"
                                                                          src="/img/level1.png" class="img-my">
                                                                     <img th:if="${grass.size()} >= 5 and ${grass.size()} < 15"
@@ -113,7 +113,7 @@
                                                         <p class="card-text" th:text="${member.introduce}">한 줄 소개</p>
 
                                                         <div style="float: right">
-                                                            <form th:action="@{/logout}" method="post">
+                                                            <form th:action="@{/logout}" method="post" th:if="${member.studentId} == ${currentId}">
                                                                 <button type="submit" class="btn btn-light">
                                                                     Log out
                                                                 </button>

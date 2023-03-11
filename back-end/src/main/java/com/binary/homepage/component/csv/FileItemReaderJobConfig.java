@@ -26,7 +26,6 @@ public class FileItemReaderJobConfig {
     public Job csvFileItemReaderJob() throws MalformedURLException {
         return jobBuilderFactory.get("csvFileItemReaderJob")
                 .start(csvFileItemReaderStep())
-                .next(step2())
                 .build();
     }
 
@@ -37,16 +36,6 @@ public class FileItemReaderJobConfig {
                 .reader(csvReader.csvFileItemReader())
                 .writer(csvWriter)
                 .allowStartIfComplete(false)
-                .build();
-    }
-
-    @Bean
-    public Step step2() {
-        return stepBuilderFactory.get("step2")
-                .tasklet((contribution, chunkContext) -> {
-                    System.out.println(">> step2 <<");
-                    return RepeatStatus.FINISHED;
-                })
                 .build();
     }
 

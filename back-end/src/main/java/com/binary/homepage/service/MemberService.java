@@ -2,9 +2,9 @@ package com.binary.homepage.service;
 
 import com.binary.homepage.component.Crawling;
 import com.binary.homepage.domain.Grass;
-import com.binary.homepage.domain.GrassInfo;
 import com.binary.homepage.domain.Member;
 import com.binary.homepage.domain.Role;
+import com.binary.homepage.repository.GrassInfoRepository;
 import com.binary.homepage.repository.GrassRepository;
 import com.binary.homepage.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,22 +24,15 @@ public class MemberService {
     private final GrassRepository grassRepository;
     private final GrassService grassService;
     private final Crawling crawling;
+    private final GrassInfoRepository grassInfoRepository;
 
     /**
      * 회원가입
      */
     @Transactional
     public Long join(Member member) {
-        validateDuplicateMember(member);
         memberRepository.save(member);
         return member.getId();
-    }
-
-    public void validateDuplicateMember(Member member) {
-        List<Member> findMembers = memberRepository.findByStudentId(member.getStudentId());
-        if (!findMembers.isEmpty()) {
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
-        }
     }
 
     /**
@@ -53,7 +46,7 @@ public class MemberService {
      * 회원 1명 조회
      */
     public Member findOne(int studentId) {
-        return memberRepository.findByStudentId(studentId).get(0);
+        return memberRepository.findAllByStudentId(studentId).get(0);
     }
 
     /**
@@ -71,21 +64,16 @@ public class MemberService {
     public void updateInfo(Long id, String introduce, String grassName, String gitHub) {
         Member member = memberRepository.findById(id).orElseThrow();
         member.setIntroduce(introduce);
-        if (member.getGrass() == null) {
-            if (!grassName.isEmpty()) {
-                List<GrassInfo> grassInfos = crawling.listGrassInfo(grassName);
-                if (grassInfos != null) {
-                    Grass grass = Grass.createGrass(member, grassName, grassInfos);
-                    member.setGrass(grass);
-                    member.getGrass().setGrassName(grassName);
-                }
-            }
+        member.setGitHub(gitHub);
+        if (member.getGrass().getGrassName() == null) {
+            member.getGrass().setGrassName(grassName);
+            grassService.initGrass(member.getGrass(), grassName);
         }
         else if (!member.getGrass().getGrassName().equals(grassName)) {
-            grassRepository.delete(member.getGrass());
-            grassService.initGrass(member, grassName);
+            grassInfoRepository.deleteAll(grassInfoRepository.findAllByGrass(member.getGrass()));
+            member.getGrass().setGrassName(grassName);
+            grassService.initGrass(member.getGrass(), grassName);
         }
-        member.setGitHub(gitHub);
     }
 
 
@@ -98,6 +86,9 @@ public class MemberService {
         member.setWarningNum(0);
         member.setRole(Role.MEMBER);
         member.setEnabled(true);
+        Grass grass = new Grass();
+        grass.setMember(member);
+        member.setGrass(grass);
         return member;
     }
 }

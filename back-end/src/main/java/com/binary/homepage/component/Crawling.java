@@ -7,6 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -39,7 +40,8 @@ public class Crawling {
                 break;
             }
         }
-
+        if (74 > grassData.length() - 4)
+            return null;
         return grassData.substring(74, grassData.length() - 4).split(splitStr);
     }
 

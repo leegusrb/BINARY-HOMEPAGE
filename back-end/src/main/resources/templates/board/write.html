@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-  <th:block th:replace="/fragment/header :: header('BINARY')"></th:block>
+  <th:block th:replace="fragment/header :: header('BINARY')"></th:block>
   <link href="/css/board-write.css" rel="stylesheet">
 </head>
 
@@ -92,12 +92,12 @@
   </section>
   <!--/ Section Blog-Single End /-->
 
-  <section th:replace="/fragment/footer :: footer"></section>
+  <section th:replace="fragment/footer :: footer"></section>
 
   <a href="/#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <div id="preloader"></div>
 
-  <th:block th:replace="/fragment/script :: script"></th:block>
+  <th:block th:replace="fragment/script :: script"></th:block>
 
 </body>
 </html>
