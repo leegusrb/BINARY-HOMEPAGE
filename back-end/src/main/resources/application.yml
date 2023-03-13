@@ -1,8 +1,11 @@
 spring:
   datasource:
-    url: jdbc:mariadb://sejong-binary.com/homepage?allowPublicKeyRetrieval=true&useSSL=false
-    username: leegusrb
-    password: dlgusrb
+#    url: jdbc:mariadb://sejong-binary.com:3306/homepage?allowPublicKeyRetrieval=true&useSSL=false
+#    password: dlgusrb
+#    username: leegusrb
+    url: jdbc:mariadb://localhost:3306/homepage?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: gang3535
     driver-class-name: org.mariadb.jdbc.Driver
   batch:
     jdbc:
@@ -10,7 +13,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
 #    properties:
 #      hibernate:
 #        show_sql: true

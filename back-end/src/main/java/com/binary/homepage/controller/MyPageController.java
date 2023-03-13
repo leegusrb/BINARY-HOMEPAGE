@@ -2,6 +2,8 @@ package com.binary.homepage.controller;
 
 import com.binary.homepage.domain.GrassInfo;
 import com.binary.homepage.domain.Member;
+import com.binary.homepage.domain.board.Board;
+import com.binary.homepage.service.BoardService;
 import com.binary.homepage.service.GrassService;
 import com.binary.homepage.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,7 @@ public class MyPageController {
 
     private final MemberService memberService;
     private final GrassService grassService;
+    private final BoardService boardService;
 
     @InitBinder("passwordForm")
     public void initBinder(WebDataBinder webDataBinder) {
@@ -36,9 +39,12 @@ public class MyPageController {
         int currentId = 0;
         if (principal != null)
             currentId = Integer.parseInt(principal.getName());
+        List<Board> boards = boardService.findAll().subList(0, 3);
+
         model.addAttribute("member", member);
         model.addAttribute("grass", grass);
         model.addAttribute("currentId", currentId);
+        model.addAttribute("boards", boards);
         return "myPage";
     }
 

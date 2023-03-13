@@ -85,11 +85,16 @@
                                                                 </h4>
                                                                 <div class="row">
                                                                     <div class="col img-div">
-                                                                        <img src="/img/github.png" class="img-github"/>
+                                                                        <a th:href="${member.gitHub}">
+                                                                            <img src="/img/github.png"
+                                                                                 class="img-github"/>
+                                                                        </a>
                                                                     </div>
                                                                     <div class="col img-div">
-                                                                        <img src="/img/darkPencile.png"
-                                                                             class="img-github"/>
+                                                                        <a th:href="${member.notion}">
+                                                                            <img src="/img/darkPencile.png"
+                                                                                 class="img-github"/>
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -113,11 +118,12 @@
                                                         <p class="card-text" th:text="${member.introduce}">한 줄 소개</p>
 
                                                         <div style="float: right">
-                                                            <form th:action="@{/logout}" method="post" th:if="${member.studentId} == ${currentId}">
-                                                                <button type="submit" class="btn btn-light">
-                                                                    Log out
-                                                                </button>
-                                                            </form>
+                                                            <a type="button" class="btn btn-outline-secondary"
+                                                               th:href="'/myPage/' + ${member.studentId} + '/updateInfo'"
+                                                               th:if="${member.studentId} == ${currentId}">
+                                                                내 정보 변경
+                                                            </a>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -157,14 +163,9 @@
 
                                             <div class="card-body">
                                                 <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">
-                                                        [코딩게시판] 이거 어떻게 하나요?
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        A second item
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        A third item
+                                                    <li class="list-group-item" th:each="board : ${boards}">
+                                                        <a th:href="${'/' + board.type + '/view/' + board.num}"
+                                                           th:text="${board.title}">[코딩게시판] 이거 어떻게 하나요?</a>
                                                     </li>
                                                 </ul>
                                                 <br/>
@@ -205,9 +206,9 @@
 
                                                 <div class="card-body"></div>
                                                 <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">~노션 링크~</li>
-                                                    <li class="list-group-item">~노션 링크~</li>
-                                                    <li class="list-group-item">~노션 링크~</li>
+                                                    <li class="list-group-item">구현 중..</li>
+                                                    <li class="list-group-item"></li>
+                                                    <li class="list-group-item"></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -216,11 +217,12 @@
                             </div>
                         </div>
                         <br/>
-                        <a type="button" class="btn btn-outline-secondary"
-                           th:href="'/myPage/' + ${member.studentId} + '/updateInfo'"
-                           th:if="${member.studentId} == ${currentId}">
-                            편집
-                        </a>
+                        <form th:action="@{/logout}" method="post"
+                              th:if="${member.studentId} == ${currentId}">
+                            <button type="submit" class="btn btn-light">
+                                로그아웃
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

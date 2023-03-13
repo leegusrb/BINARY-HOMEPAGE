@@ -16,7 +16,7 @@ public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "notice_id")
+    @Column(name = "board_id")
     private Long id;
 
     private String type;
@@ -37,22 +37,9 @@ public class Board {
 
     private Long view;
 
-    public static Board createBoard(String type, String title, String content, Member member) {
-        Board board = new Board();
-        board.setType(type);
-        board.setTitle(title);
-        board.setContent(content);
-        board.setMember(member);
-        board.setTime(LocalDateTime.now());
-        board.setView(0L);
-        return board;
-    }
+    private boolean enable;
 
-    public static String localDateTimeToString(LocalDateTime time) {
-        return time.format(
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-        );
-    }
+    private int num;
 
     public void increaseView() {
         this.view++;

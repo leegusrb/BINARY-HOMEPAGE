@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <title>DevFolio Bootstrap Template</title>
@@ -34,42 +34,7 @@
 </head>
 <body>
 <!--/ Nav Star /-->
-<nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand js-scroll" href="/#page-top">BINARY</a>
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-                aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/../index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/#" id="page-on">공지사항</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/#">같이 공부해요</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/#">같이 만들어요</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/#">회비현황</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/#">Q&A</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/#">MYPAGE</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<nav th:replace="fragment/navbar :: board-navbar"></nav>
 <!--/ Nav End /-->
 
 <!--/ Intro Skew Star /-->
@@ -81,7 +46,7 @@
                 <h2 class="intro-title mb-4">공지사항</h2>  <!--게시판 제목-->
                 <ol class="breadcrumb d-flex justify-content-center">
                     <li class="breadcrumb-item"> <!--게시판 설명-->
-                        <a href="/#" style="cursor:default">BINARY 규칙 안내 및 주요 전달 사항을 공지하는 게시판입니다.</a>
+                        <a style="cursor:default">BINARY 규칙 안내 및 주요 전달 사항을 공지하는 게시판입니다.</a>
                     </li>
                 </ol>
             </div>
@@ -103,36 +68,40 @@
                                 <th class="tg-c3ow" style="min-width: 1%; width: 5em; border-radius: 7px 0 0 0">번호</th>
                                 <th class="tg-c3ow">제목</th>
                                 <th class="tg-c3ow" style="width: 6em;">글쓴이</th>
-                                <th class="tg-c3ow" style="width: 8em;">날짜</th>
+                                <th class="tg-c3ow" style="width: 10em;">날짜</th>
                                 <th class="tg-c3ow" style="min-width: 1%; width: 6em; border-radius: 0 7px 0 0;">조회수
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="board : ${boards}">
-                                <td class="tg-c3ow" th:text="${board.id}">10</td>
-                                <td class="tg-c3ow-title"><a th:href="${'/board/view/' + board.id}" th:text="${board.title}">
+                                <td class="tg-c3ow" th:text="${board.num}">10</td>
+                                <td class="tg-c3ow-title"><a th:href="${'/' + type + '/view/' + board.id}"
+                                                             th:text="${board.title}">
                                     제목
                                 </a></td>
                                 <td class="tg-c3ow" th:text="${board.member.name}">신아진</td>
-                                <td class="tg-c3ow" th:text="${board.time}">2 시간 전</td>
+                                <td class="tg-c3ow" th:text="${service.localDateTimeToString(board.time)}">2 시간 전</td>
                                 <td class="tg-c3ow" th:text="${board.view}">1</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="bt_se">
-                        <a type="button" class="btn btn-outline-secondary" th:href="@{/board/write}">글쓰기</a>
+                        <a type="button" class="btn btn-outline-secondary" th:href="${'/' + type + '/write'}" sec:authorize="hasRole('MANAGER')">글쓰기</a>
                     </div>
                     <div class="paging">
                         <!-- 바디 부분 하단 다음페이지, 전 페이지 버튼 부분 -->
-                        <a th:href="@{/board(page=0)}" class="bt first">처음</a>
-                        <a th:if="${0 != currentPage}" th:href="@{/board(page=${currentPage - 1})}" class="bt prev">이전</a>
+                        <a th:href="${'/' + type + '?page=0'}" class="bt first">처음</a>
+                        <a th:if="${0 != currentPage}" th:href="${'/' + type + '?page=' + (currentPage - 1)}"
+                           class="bt prev">이전</a>
                         <th:block th:each="i : ${#numbers.sequence(startPage, endPage)}">
-                            <a th:href="@{/board(page=${i})}" class="num" th:classappend="${i == currentPage} ? 'num-on'" th:text="${i + 1}">1</a>
+                            <a th:href="${'/' + type + '?page=' + i}" class="num"
+                               th:classappend="${i == currentPage} ? 'num-on'" th:text="${i + 1}">1</a>
                         </th:block>
-                        <a th:if="${endPage != currentPage}" th:href="@{/board(page=${currentPage + 1})}" class="bt next">다음</a>
-                        <a th:href="@{/board(page=${boards.getTotalPages() - 1})}" class="bt last">끝</a>
+                        <a th:if="${endPage != currentPage}" th:href="${'/' + type + '?page=${currentPage + 1}'}"
+                           class="bt next">다음</a>
+                        <a th:href="${'/' + type + '?page=' + (boards.getTotalPages() - 1)}" class="bt last">끝</a>
                     </div>
                 </div>
             </div>
@@ -158,20 +127,20 @@
                     <div class="sidebar-content">
                         <ul class="list-sidebar">
                             <li>
-                                <a href="/#">동아리 규칙안내</a>
+                                <a href="#">구현중...</a>
                             </li>
-                            <li>
-                                <a href="/#">2023년도 1학기 개강총회 공지</a>
-                            </li>
-                            <li>
-                                <a href="/#">최근 작성된 글 상위 5개만 노출</a>
-                            </li>
-                            <li>
-                                <a href="/#">ㅇㅅㅇ ㅇㅅㅇ ㅇㅅㅇ ㅇㅅㅇ</a>
-                            </li>
-                            <li>
-                                <a href="/#">ㅇㅅㅇ ㅇㅅㅇ ㅇㅅㅇ ㅇㅅㅇ</a>
-                            </li>
+<!--                            <li>-->
+<!--                                <a href="/#">2023년도 1학기 개강총회 공지</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="/#">최근 작성된 글 상위 5개만 노출</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="/#">ㅇㅅㅇ ㅇㅅㅇ ㅇㅅㅇ ㅇㅅㅇ</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="/#">ㅇㅅㅇ ㅇㅅㅇ ㅇㅅㅇ ㅇㅅㅇ</a>-->
+<!--                            </li>-->
                         </ul>
                     </div>
                 </div>

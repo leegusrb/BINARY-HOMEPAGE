@@ -37,42 +37,7 @@
 
 <body>
 <!--/ Nav Star /-->
-<nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand js-scroll" th:href="@{/}" href="/">BINARY</a>
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-                aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/../index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/#" id="page-on">공지사항</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/#">같이 공부해요</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/#">같이 만들어요</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/#">회비현황</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/#">Q&A</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="/#">MYPAGE</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<nav th:replace="fragment/navbar :: board-navbar"></nav>
 <!--/ Nav End /-->
 
 <!--/ Intro Skew Star /-->
@@ -110,12 +75,13 @@
                             </div>
                         </div>
                         <div class="title-next">
-                            <div class="bo-file-download">
-                                파일 : 홈페이지만들기.pdf or 첨부된 파일이 없습니다.<a href="/#" download></a>
-                            </div>
-                            <ul class="bo_ser_ul" style="height: max-content; margin-top: 0.6em;">
-                                <li class="bo_ser_li"><a href="/#">수정</a></li>
-                                <li class="bo_ser_li"><a href="/#">삭제</a></li>
+                            <!--                            <div class="bo-file-download">-->
+                            <!--                                파일 : 홈페이지만들기.pdf or 첨부된 파일이 없습니다.<a href="/#" download></a>-->
+                            <!--                            </div>-->
+                            <ul class="bo_ser_ul" th:if="${board.member.studentId == currentId}"
+                                style="height: max-content; margin-top: 0.6em;">
+                                <li class="bo_ser_li"><a th:href="${'/' + type + '/write/' + board.id}">수정</a></li>
+                                <li class="bo_ser_li"><a th:href="${'/' + type + '/delete/' + board.id}">삭제</a></li>
                             </ul>
                         </div>
 
@@ -126,28 +92,32 @@
                         <!-- 목록, 수정, 삭제 -->
                         <div id="bo_ser">
                             <ul class="bo_ser_ul">
-                                <li class="bo_ser_li"><a th:href="@{/board/view/{id}(id = ${board.id - 1})}">이전글</a></li>
+                                <li class="bo_ser_li"><a
+                                        th:href="${'/' + type + 'board/view/' + (board.id - 1)}">이전글</a></li>
                             </ul>
                             <ul class="bo_ser_ul">
-                                <li class="bo_ser_li"><a th:href="@{/board}">목록으로</a></li>
+                                <li class="bo_ser_li"><a th:href="${'/' + type}">목록으로</a></li>
                             </ul>
                             <ul class="bo_ser_ul">
-                                <li class="bo_ser_li"><a th:href="@{/board/view/{id}(id = ${board.id + 1})}">다음글</a></li>
+                                <li class="bo_ser_li"><a th:href="${'/' + type + '/view/' + (board.id + 1)}">다음글</a>
+                                </li>
                             </ul>
                         </div>
                         <!--- 댓글 불러오기 -->
-                        <div class="reply_view">
-                            <h3 class="title-left">댓글목록</h3>
-                            <div class="dap_lo" style="margin: 0.5rem 0;">
-                                <div id="reply_name" style="font-size:large"><b>21011948신아진</b></div>
-                                <div class="reply_content">바이너리 홈페이지 게시판 댓글</div>
-                                <div class="reply_date">2023-02-12 16:38:10</div>
-                            </div>
+                        <!--
+                    <div class="reply_view">
+                        <h3 class="title-left">댓글목록</h3>
+                        <div class="dap_lo" style="margin: 0.5rem 0;">
+                            <div id="reply_name" style="font-size:large"><b>21011948신아진</b></div>
+                            <div class="reply_content">바이너리 홈페이지 게시판 댓글</div>
+                            <div class="reply_date">2023-02-12 16:38:10</div>
+                        </div>
+                        -->
 
                             <!--- 댓글 입력 폼 -->
+                            <!--
                             <div class="dap_ins">
                                 <form action="" method="post">
-                                    <!-- <input type="hidden" name="dat_user" id="dat_user" class="dat_user" size="100" placeholder="아이디" value=<?$_SESSION['userid']?>> -->
                                     <div style="margin-top:1.5em;">
                                         <textarea name="content" class="reply_content"
                                                   id="re_content">댓글입력하는 곳</textarea>
@@ -158,6 +128,7 @@
                                     </div>
                                 </form>
                             </div>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -185,19 +156,10 @@
                     <div class="sidebar-content">
                         <ul class="list-sidebar">
                             <li>
-                                <a href="/#">동아리 규칙안내</a>
+                                <a href="#">구현 중..</a>
                             </li>
                             <li>
-                                <a href="/#">2023년도 1학기 개강총회 공지</a>
-                            </li>
-                            <li>
-                                <a href="/#">최근 작성된 글 상위 5개만 노출</a>
-                            </li>
-                            <li>
-                                <a href="/#">ㅇㅅㅇ ㅇㅅㅇ ㅇㅅㅇ ㅇㅅㅇ</a>
-                            </li>
-                            <li>
-                                <a href="/#">ㅇㅅㅇ ㅇㅅㅇ ㅇㅅㅇ ㅇㅅㅇ</a>
+                                <a href="#">구현 중..</a>
                             </li>
                         </ul>
                     </div>

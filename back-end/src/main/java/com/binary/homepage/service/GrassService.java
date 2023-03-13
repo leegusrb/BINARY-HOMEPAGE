@@ -59,11 +59,9 @@ public class GrassService {
         List<Member> members = memberRepository.findAll();
         for (Member member : members) {
             Grass grass = member.getGrass();
-            if (grass != null) {
-                GrassInfo todayGrassInfo = crawling.getTodayGrassData(grass.getGrassName());
-                if (todayGrassInfo != null)
-                    grass.addGrassInfo(todayGrassInfo);
-            }
+            GrassInfo todayGrassInfo = crawling.getTodayGrassData(grass.getGrassName());
+            if (todayGrassInfo != null)
+                grass.addGrassInfo(todayGrassInfo);
         }
     }
 

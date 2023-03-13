@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    List<Member> findAllByStudentId(int studentId);
+    Member findByStudentId(int studentId);
 }

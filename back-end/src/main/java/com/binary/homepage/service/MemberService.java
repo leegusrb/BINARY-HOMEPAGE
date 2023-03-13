@@ -46,7 +46,7 @@ public class MemberService {
      * 회원 1명 조회
      */
     public Member findOne(int studentId) {
-        return memberRepository.findAllByStudentId(studentId).get(0);
+        return memberRepository.findByStudentId(studentId);
     }
 
     /**
