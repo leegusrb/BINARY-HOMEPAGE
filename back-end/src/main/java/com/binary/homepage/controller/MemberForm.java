@@ -10,4 +10,5 @@ public class MemberForm {
     private String introduce;
     private String grassName;
     private String gitHub;
+    private String notion;
 }

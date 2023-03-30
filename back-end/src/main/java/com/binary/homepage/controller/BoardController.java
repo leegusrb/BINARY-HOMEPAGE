@@ -2,7 +2,11 @@ package com.binary.homepage.controller;
 
 import com.binary.homepage.domain.Member;
 import com.binary.homepage.domain.board.Board;
+import com.binary.homepage.domain.board.Comment;
+import com.binary.homepage.repository.BoardRepository;
+import com.binary.homepage.repository.CommentRepository;
 import com.binary.homepage.service.BoardService;
+import com.binary.homepage.service.CommentService;
 import com.binary.homepage.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,6 +18,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,6 +27,9 @@ public class BoardController {
 
     private final BoardService boardService;
     private final MemberService memberService;
+    private final CommentService commentService;
+    private final CommentRepository commentRepository;
+    private final BoardRepository boardRepository;
 
     @GetMapping("/{type}")
     public String noticeList(@PathVariable String type, Model model, @PageableDefault(size = 10) Pageable pageable, Principal principal) {
@@ -31,6 +40,9 @@ public class BoardController {
         int id = 0;
         if (principal != null) id = Integer.parseInt(principal.getName());
         Member member = memberService.findOne(id);
+        List<Board> allBoard = boardService.findAll();
+        int end = Math.min(allBoard.size(), 3);
+        List<Board> boardList = allBoard.subList(0, end);
 
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("startPage", startPage);
@@ -39,6 +51,9 @@ public class BoardController {
         model.addAttribute("service", boardService);
         model.addAttribute("type", type);
         model.addAttribute("studentId", id);
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("boardTitle", boardService.getBoardTitle().get(type));
+        model.addAttribute("boardContent", boardService.getBoardContent().get(type));
         return "board/list";
     }
 
@@ -49,10 +64,24 @@ public class BoardController {
         board.increaseView();
         int currentId = 0;
         if (principal != null) currentId = Integer.parseInt(principal.getName());
+        CommentForm commentForm = new CommentForm();
+        commentForm.setStudentId(currentId);
+        List<Comment> comments = commentRepository.findAllByBoard(board);
+        List<Board> allBoard = boardService.findAll();
+        int end = Math.min(allBoard.size(), 3);
+        List<Board> boardList = allBoard.subList(0, end);
+        Board prev = boardRepository.findByNumAndType(board.getNum() - 1, board.getType());
+        Board next = boardRepository.findByNumAndType(board.getNum() + 1, board.getType());
 
         model.addAttribute("board", board);
         model.addAttribute("currentId", currentId);
         model.addAttribute("type", type);
+        model.addAttribute("commentForm", commentForm);
+        model.addAttribute("comments", comments);
+        model.addAttribute("service", boardService);
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("prev", prev);
+        model.addAttribute("next", next);
         return "board/view";
     }
 
@@ -109,4 +138,13 @@ public class BoardController {
         return "redirect:/" + type;
     }
 
+    @PostMapping("/{type}/comment/{id}")
+    public String comment(@PathVariable String type, @PathVariable Long id, @ModelAttribute CommentForm commentForm) {
+        if (commentForm.getStudentId() == 0) return "redirect:/login";
+        Board board = boardService.findOne(id);
+        Member member = memberService.findOne(commentForm.getStudentId());
+        Comment comment = Comment.createComment(commentForm.getComment(), board, member);
+        commentService.save(comment);
+        return "redirect:/" + type + "/view/" + id;
+    }
 }

@@ -1,6 +1,7 @@
 package com.binary.homepage.domain;
 
 import com.binary.homepage.domain.board.Board;
+import com.binary.homepage.domain.board.Comment;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,6 +44,9 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<Board> boards = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
+    private List<Comment> comments = new ArrayList<>();
 
     public void updatePassword(String newPassword) {
         this.password = newPassword;

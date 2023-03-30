@@ -1,28 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="ko" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
-    <title>BINARY</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta content="" name="keywords"/>
-    <meta content="" name="description"/>
-
-    <!-- Favicons -->
-    <link href="/img/favicon.png" rel="icon">
-    <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-    <!-- Bootstrap CSS File -->
-    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Libraries CSS Files -->
-    <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-    <!-- Main Stylesheet File -->
-    <link href="/css/style.css" rel="stylesheet">
+    <th:block th:replace="fragment/header :: header('MYPAGE')"></th:block>
     <link href="/css/01.css" rel="stylesheet">
     <link href="/css/mypage.css" rel="stylesheet">
 
@@ -136,7 +115,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <h5 class="card-title">내 텃밭</h5>
-                                                        <p class="card-text">~잔디심기~</p>
+                                                        <p class="card-text">!!업데이트 예정!!</p>
                                                         <div style="float: right" th:if="${member.grass} != null">
                                                             <a type="button" class="btn btn-outline-primary"
                                                                th:href="'https://www.acmicpc.net/user/' + ${member.grass.grassName}">
@@ -179,13 +158,6 @@
                                                     <div class="col">
                                                         <h5 class="card-title">내가 한 활동</h5>
                                                     </div>
-                                                    <div class="col">
-                                                        <div style="float: right">
-                                                            <a th:href="${member.gitHub}">
-                                                                <img src="/img/github.png" class="img-github"/>
-                                                            </a>
-                                                        </div>
-                                                    </div>
                                                 </div>
 
                                                 <p class="card-text">
@@ -206,9 +178,9 @@
 
                                                 <div class="card-body"></div>
                                                 <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">구현 중..</li>
-                                                    <li class="list-group-item"></li>
-                                                    <li class="list-group-item"></li>
+                                                    <li class="list-group-item">업데이트 예정</li>
+<!--                                                    <li class="list-group-item"></li>-->
+<!--                                                    <li class="list-group-item"></li>-->
                                                 </ul>
                                             </div>
                                         </div>
@@ -217,12 +189,13 @@
                             </div>
                         </div>
                         <br/>
-                        <form th:action="@{/logout}" method="post"
+                        <form style="float: right" th:action="@{/logout}" method="post"
                               th:if="${member.studentId} == ${currentId}">
                             <button type="submit" class="btn btn-light">
                                 로그아웃
                             </button>
                         </form>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -235,21 +208,7 @@
 <div id="preloader"></div>
 
 <!-- JavaScript Libraries -->
-<script src="/lib/jquery/jquery.min.js"></script>
-<script src="/lib/jquery/jquery-migrate.min.js"></script>
-<script src="/lib/popper/popper.min.js"></script>
-<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="/lib/easing/easing.min.js"></script>
-<script src="/lib/counterup/jquery.waypoints.min.js"></script>
-<script src="/lib/counterup/jquery.counterup.js"></script>
-<script src="/lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="/lib/lightbox/js/lightbox.min.js"></script>
-<script src="/lib/typed/typed.min.js"></script>
-<!-- Contact Form JavaScript File -->
-<script src="/contactform/contactform.js"></script>
-
-<!-- Template Main Javascript File -->
-<script src="/js/main.js"></script>
+<th:block th:replace="fragment/script :: script"></th:block>
 
 </body>
 </html>

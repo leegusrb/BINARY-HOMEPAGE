@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <th:block th:replace="fragment/header :: header('BINARY')"></th:block>
+    <th:block th:replace="fragment/header :: header('GRASS')"></th:block>
     <link href="/css/dailyCoding.css" rel="stylesheet"/>
 </head>
 
@@ -37,6 +37,13 @@
                         <div class="container">
                             <h1>잔디심기</h1>
                             <hr class="border border-primary border-3 opacity-75"/>
+                        </div>
+                        <div class="d-grid gap-2 d-md-block">
+                            <button type="button" class="btn btn-outline-primary">1월</button>
+                            <button type="button" class="btn btn-outline-primary">2월</button>
+                            <button type="button" class="btn btn-outline-primary">3월</button>
+                            <button type="button" class="btn btn-outline-primary">4월</button>
+                            <button type="button" class="btn btn-outline-primary">5월</button>
                         </div>
                         <!-- 잔디심기 카드 -->
                         <div class="card-area">

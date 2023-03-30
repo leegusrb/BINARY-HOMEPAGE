@@ -61,10 +61,11 @@ public class MemberService {
      * 상세정보 변경
      */
     @Transactional
-    public void updateInfo(Long id, String introduce, String grassName, String gitHub) {
+    public void updateInfo(Long id, String introduce, String grassName, String gitHub, String notion) {
         Member member = memberRepository.findById(id).orElseThrow();
         member.setIntroduce(introduce);
         member.setGitHub(gitHub);
+        member.setNotion(notion);
         if (member.getGrass().getGrassName() == null) {
             member.getGrass().setGrassName(grassName);
             grassService.initGrass(member.getGrass(), grassName);

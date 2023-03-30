@@ -1,29 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="ko" xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8">
-    <title>DevFolio Bootstrap Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-    <!-- Favicons -->
-    <link href="/img/favicon.png" rel="icon">
-    <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-    <!-- Bootstrap CSS File -->
-    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Libraries CSS Files -->
-    <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-    <!-- Main Stylesheet File -->
-    <link href="/css/style.css" rel="stylesheet">
+    <th:block th:replace="fragment/header :: header('BOARD')"></th:block>
     <link href="/css/board-main.css" rel="stylesheet">
     <link href="/css/board-posted.css" rel="stylesheet">
 
@@ -69,7 +48,7 @@
                             <h3 class="title-left" th:text="${board.title}">제목입니다.</h3>
                             <div id="user_info" style="float:right;">
                                 <span th:text="${board.member.name}">신아진</span>
-                                <span th:text="${board.time}">2022-02-01</span>
+                                <span th:text="${service.localDateTimeToString(board.time)}">2022-02-01</span>
                                 조회:<span th:text="${board.view}">1</span>
                                 <div id="bo_line"></div>
                             </div>
@@ -92,43 +71,45 @@
                         <!-- 목록, 수정, 삭제 -->
                         <div id="bo_ser">
                             <ul class="bo_ser_ul">
-                                <li class="bo_ser_li"><a
-                                        th:href="${'/' + type + 'board/view/' + (board.id - 1)}">이전글</a></li>
+                                <li class="bo_ser_li" th:if="${prev != null}">
+                                    <a th:href="${'/' + type + '/view/' + (prev.id)}">이전글</a>
+                                </li>
                             </ul>
                             <ul class="bo_ser_ul">
                                 <li class="bo_ser_li"><a th:href="${'/' + type}">목록으로</a></li>
                             </ul>
                             <ul class="bo_ser_ul">
-                                <li class="bo_ser_li"><a th:href="${'/' + type + '/view/' + (board.id + 1)}">다음글</a>
+                                <li class="bo_ser_li" th:if="${next != null}">
+                                    <a th:href="${'/' + type + '/view/' + (next.id)}">다음글</a>
                                 </li>
                             </ul>
                         </div>
                         <!--- 댓글 불러오기 -->
-                        <!--
-                    <div class="reply_view">
-                        <h3 class="title-left">댓글목록</h3>
-                        <div class="dap_lo" style="margin: 0.5rem 0;">
-                            <div id="reply_name" style="font-size:large"><b>21011948신아진</b></div>
-                            <div class="reply_content">바이너리 홈페이지 게시판 댓글</div>
-                            <div class="reply_date">2023-02-12 16:38:10</div>
-                        </div>
-                        -->
 
+                        <div class="reply_view">
+                            <h3 class="title-left">댓글</h3>
+                            <div class="dap_lo" style="margin: 0.5rem 0;" th:each="comment : ${comments}">
+                                <div id="reply_name" style="font-size:large" th:text="${comment.member.name}"><b>21011948신아진</b>
+                                </div>
+                                <div class="reply_content" th:text="${comment.cmt}">바이너리 홈페이지 게시판 댓글</div>
+                                <div class="reply_date" th:text="${service.localDateTimeToString(comment.time)}">
+                                    2023-02-12 16:38:10
+                                </div>
+                            </div>
                             <!--- 댓글 입력 폼 -->
-                            <!--
                             <div class="dap_ins">
-                                <form action="" method="post">
+                                <form th:action="'/' + ${board.type} + '/comment/' + ${board.id}"
+                                      th:object="${commentForm}" method="post">
                                     <div style="margin-top:1.5em;">
+                                        <input type="hidden" th:field="*{studentId}" th:value="${id}">
                                         <textarea name="content" class="reply_content"
-                                                  id="re_content">댓글입력하는 곳</textarea>
+                                                  id="re_content" th:field="*{comment}"></textarea>
                                         <div class="re_bt">
-                                            <button id="rep_bt" type="submit" style="margin-right: 0;">댓글</button>
+                                            <button id="rep_bt" type="submit" style="margin-right: 0;">입력</button>
                                         </div>
-
                                     </div>
                                 </form>
                             </div>
-                            -->
                         </div>
                     </div>
                 </div>
@@ -151,7 +132,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="widget-sidebar">
+                <div class="widget-sidebar" th:replace="fragment/recentPost :: recentPost">
                     <h5 class="sidebar-title">Recent Post</h5>
                     <div class="sidebar-content">
                         <ul class="list-sidebar">
@@ -200,21 +181,7 @@
 <div id="preloader"></div>
 
 <!-- JavaScript Libraries -->
-<script src="/lib/jquery/jquery.min.js"></script>
-<script src="/lib/jquery/jquery-migrate.min.js"></script>
-<script src="/lib/popper/popper.min.js"></script>
-<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="/lib/easing/easing.min.js"></script>
-<script src="/lib/counterup/jquery.waypoints.min.js"></script>
-<script src="/lib/counterup/jquery.counterup.js"></script>
-<script src="/lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="/lib/lightbox/js/lightbox.min.js"></script>
-<script src="/lib/typed/typed.min.js"></script>
-<!-- Contact Form JavaScript File -->
-<script src="/contactform/contactform.js"></script>
-
-<!-- Template Main Javascript File -->
-<script src="/js/main.js"></script>
+<th:block th:replace="fragment/script :: script"></th:block>
 
 </body>
 

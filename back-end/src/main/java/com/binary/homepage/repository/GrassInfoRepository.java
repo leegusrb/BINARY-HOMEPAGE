@@ -12,4 +12,5 @@ public interface GrassInfoRepository extends JpaRepository<GrassInfo, Long> {
     List<GrassInfo> findAllByGrassEqualsAndDateIsAfterAndDateIsBefore(Grass grass, LocalDate start, LocalDate end);
 
     List<GrassInfo> findAllByGrass(Grass grass);
+
 }

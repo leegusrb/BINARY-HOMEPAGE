@@ -8,11 +8,14 @@ import com.binary.homepage.repository.GrassInfoRepository;
 import com.binary.homepage.repository.GrassRepository;
 import com.binary.homepage.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -20,6 +23,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
+@EnableScheduling
 public class GrassService {
 
     private final GrassRepository grassRepository;
@@ -38,11 +42,25 @@ public class GrassService {
      * 잔디심기 순위 조회
      */
     public List<Grass> findRanking() {
-        List<Grass> grasses = grassRepository.findAll();
+        List<Grass> grasses = findAll();
 
         return grasses
                 .stream()
                 .sorted((g1, g2) -> getMonthGrass(g2).size() - getMonthGrass(g1).size())
+                .collect(Collectors.toList());
+    }
+
+    public List<GrassInfo> getMonthGrassInfos(Grass grass, int month) {
+        LocalDate now = LocalDate.now();
+        LocalDate start = LocalDate.of(now.getYear(), Month.of(month), 1);
+        LocalDate end = LocalDate.of(now.getYear(), Month.of(month + 1), 1).plusDays(-1);
+        return grassInfoRepository.findAllByGrassEqualsAndDateIsAfterAndDateIsBefore(grass, start, end);
+    }
+
+    public List<Grass> findMonthRanking(List<Grass> grasses, int month) {
+        return grasses
+                .stream()
+                .sorted((g1, g2) -> getMonthGrassInfos(g2, month).size() - getMonthGrassInfos(g1, month).size())
                 .collect(Collectors.toList());
     }
 
@@ -53,15 +71,18 @@ public class GrassService {
         return grassRepository.findById(grassId);
     }
 
-    @Transactional
     @Scheduled(cron = "0 0 0 * * *")
+    @Transactional
     public void updateGrass() {
         List<Member> members = memberRepository.findAll();
         for (Member member : members) {
             Grass grass = member.getGrass();
+            if (grass.getGrassName() == null || grass.getGrassName().isEmpty()) continue;
             GrassInfo todayGrassInfo = crawling.getTodayGrassData(grass.getGrassName());
-            if (todayGrassInfo != null)
+            if (todayGrassInfo != null) {
                 grass.addGrassInfo(todayGrassInfo);
+                grassInfoRepository.save(todayGrassInfo);
+            }
         }
     }
 

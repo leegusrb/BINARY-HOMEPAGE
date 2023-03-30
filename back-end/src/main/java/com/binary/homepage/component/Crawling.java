@@ -61,6 +61,7 @@ public class Crawling {
 
             if (LocalDate.now().plusDays(-1).equals(date)) {
                 int grassNum = Integer.parseInt(splitInfo[1]);
+                System.out.println(1);
                 return GrassInfo.createGrassInfo(date, grassNum);
             }
         }

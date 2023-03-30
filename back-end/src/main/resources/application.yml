@@ -1,8 +1,8 @@
 spring:
   datasource:
-#    url: jdbc:mariadb://sejong-binary.com:3306/homepage?allowPublicKeyRetrieval=true&useSSL=false
-#    password: dlgusrb
-#    username: leegusrb
+#    url: jdbc:mariadb://ls-50a0e10412309c5e6f594c225185853fcee8742e.cvuihjw6by4y.ap-northeast-2.rds.amazonaws.com:3306/homepage?allowPublicKeyRetrieval=true&useSSL=false
+#    username: dbmasteruser
+#    password: Fvwi$+P$lAgw?&Du5C.V)3g)`r$VBODs
     url: jdbc:mariadb://localhost:3306/homepage?allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: gang3535
@@ -13,7 +13,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
 #    properties:
 #      hibernate:
 #        show_sql: true

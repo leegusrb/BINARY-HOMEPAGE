@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="ko">
+<div class="widget-sidebar" th:fragment="recentPost">
+    <h5 class="sidebar-title">Recent Post</h5>
+    <div class="sidebar-content">
+        <ul class="list-sidebar">
+            <li th:each="board : ${boardList}">
+                <a th:href="'/' + ${board.type} + '/view/' + ${board.id}" th:text="${board.title}">게시물이 없습니다.</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</html>

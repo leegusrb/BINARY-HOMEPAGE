@@ -37,9 +37,10 @@ public class MyPageController {
         Member member = memberService.findOne(studentId);
         List<GrassInfo> grass = grassService.getMonthGrass(member.getGrass());
         int currentId = 0;
-        if (principal != null)
-            currentId = Integer.parseInt(principal.getName());
-        List<Board> boards = boardService.findAll().subList(0, 3);
+        if (principal != null) currentId = Integer.parseInt(principal.getName());
+        List<Board> allBoards = boardService.findAllByMember(member);
+        int end = Math.min(allBoards.size(), 3);
+        List<Board> boards = allBoards.subList(0, end);
 
         model.addAttribute("member", member);
         model.addAttribute("grass", grass);
@@ -58,9 +59,9 @@ public class MyPageController {
         MemberForm memberForm = new MemberForm();
         memberForm.setId(member.getId());
         memberForm.setIntroduce(member.getIntroduce());
-        if (member.getGrass() != null)
-            memberForm.setGrassName(member.getGrass().getGrassName());
+        if (member.getGrass() != null) memberForm.setGrassName(member.getGrass().getGrassName());
         memberForm.setGitHub(member.getGitHub());
+        memberForm.setNotion(member.getNotion());
 
         model.addAttribute("memberForm", memberForm);
         model.addAttribute("passwordForm", new PasswordForm());
@@ -69,7 +70,7 @@ public class MyPageController {
 
     @PostMapping("/{studentId}/updateInfo")
     public String updateInfo(@PathVariable int studentId, @ModelAttribute("memberForm") MemberForm memberForm) {
-        memberService.updateInfo(memberForm.getId(), memberForm.getIntroduce(), memberForm.getGrassName(), memberForm.getGitHub());
+        memberService.updateInfo(memberForm.getId(), memberForm.getIntroduce(), memberForm.getGrassName(), memberForm.getGitHub(), memberForm.getNotion());
 
         return "redirect:/myPage/" + studentId;
     }
